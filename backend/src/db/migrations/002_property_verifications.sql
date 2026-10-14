@@ -1,0 +1,22 @@
+CREATE TABLE IF NOT EXISTS property_verifications (
+  id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  owner_id BIGINT UNSIGNED NOT NULL,
+  property_id BIGINT UNSIGNED NOT NULL,
+  provider VARCHAR(80) NOT NULL,
+  verification_mode ENUM('DEMO', 'SANDBOX', 'PRODUCTION') NOT NULL,
+  status ENUM('PENDING', 'IN_PROGRESS', 'VERIFIED', 'FAILED', 'MANUAL_REVIEW', 'EXPIRED') NOT NULL DEFAULT 'PENDING',
+  document_type VARCHAR(120) NULL,
+  issuer VARCHAR(180) NULL,
+  matching_result VARCHAR(80) NULL,
+  verification_metadata JSON NULL,
+  failure_reason VARCHAR(500) NULL,
+  consented_at DATETIME NOT NULL,
+  verified_at DATETIME NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  KEY idx_property_verifications_property (property_id, created_at),
+  KEY idx_property_verifications_owner (owner_id, created_at),
+  KEY idx_property_verifications_status (status, created_at),
+  CONSTRAINT fk_property_verifications_owner FOREIGN KEY (owner_id) REFERENCES users(id) ON DELETE CASCADE,
+  CONSTRAINT fk_property_verifications_property FOREIGN KEY (property_id) REFERENCES properties(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
