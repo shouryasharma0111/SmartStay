@@ -1,0 +1,563 @@
+/* ==========================================================================
+   SmartStay AI Chatbot ("StayBot") - Premium Floating Widget CSS
+   Matches SmartStay Design System: Poppins, Inter, Blue, Emerald, Glassmorphism
+   ========================================================================== */
+
+:root {
+  --staybot-primary: #2563EB;
+  --staybot-primary-dark: #1D4ED8;
+  --staybot-accent: #10B981;
+  --staybot-navy: #0F172A;
+  --staybot-bg: #FFFFFF;
+  --staybot-surface: #F8FAFC;
+  --staybot-surface-2: #EEF2F6;
+  --staybot-border: #E2E8F0;
+  --staybot-text: #0F172A;
+  --staybot-text-muted: #64748B;
+  --staybot-shadow: 0 12px 36px -6px rgba(15, 23, 42, 0.22), 0 4px 12px rgba(15, 23, 42, 0.08);
+  --staybot-radius: 20px;
+}
+
+/* Floating Trigger Button */
+.staybot-trigger {
+  position: fixed;
+  bottom: 26px;
+  right: 26px;
+  z-index: 99999;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2563EB, #1D4ED8);
+  color: #FFFFFF;
+  border: none;
+  box-shadow: 0 8px 26px rgba(37, 99, 235, 0.42), 0 2px 8px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  outline: none;
+  padding: 0;
+}
+
+.staybot-trigger:hover {
+  transform: scale(1.1) translateY(-3px);
+  box-shadow: 0 14px 32px rgba(37, 99, 235, 0.52);
+}
+
+.staybot-trigger:active {
+  transform: scale(0.95);
+}
+
+.staybot-trigger-icon-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.staybot-robot-icon-container {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.25s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.staybot-trigger-close-icon {
+  position: absolute;
+  font-size: 24px;
+  font-weight: 700;
+  color: #FFFFFF;
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.5);
+  transition: opacity 0.25s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.staybot-trigger.active .staybot-robot-icon-container {
+  opacity: 0;
+  transform: scale(0.5) rotate(90deg);
+}
+
+.staybot-trigger.active .staybot-trigger-close-icon {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+/* ==========================================================================
+   ANIMATED WAVING ROBOT STYLES & KEYFRAMES
+   ========================================================================== */
+
+.staybot-robot-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+}
+
+/* Continuous Waving Hand Animation */
+@keyframes staybotHandWave {
+  0% { transform: rotate(0deg); }
+  20% { transform: rotate(-30deg); }
+  40% { transform: rotate(18deg); }
+  60% { transform: rotate(-24deg); }
+  80% { transform: rotate(12deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.staybot-waving-arm-group {
+  transform-origin: 34px 32px;
+  animation: staybotHandWave 1.6s infinite ease-in-out;
+}
+
+/* Robot Eye Blinking */
+@keyframes staybotEyeBlink {
+  0%, 88%, 100% { transform: scaleY(1); }
+  94% { transform: scaleY(0.12); }
+}
+
+.staybot-eye {
+  transform-origin: 24px 20.5px;
+  animation: staybotEyeBlink 4s infinite;
+}
+
+/* Antenna Glowing Light */
+@keyframes staybotAntennaPulse {
+  0%, 100% { fill: #38BDF8; filter: drop-shadow(0 0 2px #38BDF8); }
+  50% { fill: #A5F3FC; filter: drop-shadow(0 0 7px #38BDF8); }
+}
+
+.staybot-antenna-light {
+  animation: staybotAntennaPulse 1.8s infinite ease-in-out;
+}
+
+/* Heartbeat Core Pulse */
+@keyframes staybotCoreGlow {
+  0%, 100% { transform: scale(1); opacity: 0.85; }
+  50% { transform: scale(1.3); opacity: 1; filter: drop-shadow(0 0 4px #10B981); }
+}
+
+.staybot-core-pulse {
+  transform-origin: 24px 36.5px;
+  animation: staybotCoreGlow 2s infinite ease-in-out;
+}
+
+/* Yellow Sparkle Floating */
+@keyframes staybotSparkleFloat {
+  0%, 100% { opacity: 0.35; transform: scale(0.8) translate(0, 0); }
+  50% { opacity: 1; transform: scale(1.25) translate(1px, -1.5px); }
+}
+
+.staybot-sparkle {
+  transform-origin: 42.5px 12px;
+  animation: staybotSparkleFloat 1.6s infinite ease-in-out;
+}
+
+/* Pulsing Badge on Trigger */
+.staybot-trigger-badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  background: #10B981;
+  color: #FFFFFF;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 3px 7px;
+  border-radius: 12px;
+  border: 2px solid #FFFFFF;
+  box-shadow: 0 2px 6px rgba(16, 185, 129, 0.4);
+  animation: staybotPulse 2s infinite;
+}
+
+@keyframes staybotPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+/* Main Chatbot Window */
+.staybot-window {
+  position: fixed;
+  bottom: 100px;
+  right: 26px;
+  z-index: 99999;
+  width: 390px;
+  max-width: calc(100vw - 32px);
+  height: 580px;
+  max-height: calc(100vh - 120px);
+  background: #FFFFFF;
+  border-radius: var(--staybot-radius);
+  box-shadow: var(--staybot-shadow);
+  border: 1px solid var(--staybot-border);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px) scale(0.95);
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.staybot-window.open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+/* Chat Header */
+.staybot-header {
+  padding: 16px 18px;
+  background: linear-gradient(135deg, #0F172A, #1E293B);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.staybot-header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.staybot-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #2563EB, #1D4ED8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px;
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+  overflow: hidden;
+}
+
+.staybot-header-title h4 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.staybot-header-title p {
+  font-size: 11.5px;
+  margin: 0;
+  color: #94A3B8;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.staybot-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #10B981;
+  box-shadow: 0 0 6px #10B981;
+}
+
+.staybot-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.staybot-header-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: #CBD5E1;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.staybot-header-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #FFFFFF;
+}
+
+/* Chat Messages Body */
+.staybot-body {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+  background: #F8FAFC;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.staybot-msg {
+  display: flex;
+  flex-direction: column;
+  max-width: 84%;
+  animation: staybotMsgIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes staybotMsgIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.staybot-msg.bot {
+  align-self: flex-start;
+}
+
+.staybot-msg.user {
+  align-self: flex-end;
+}
+
+.staybot-bubble {
+  padding: 11px 15px;
+  font-size: 13.5px;
+  line-height: 1.5;
+  border-radius: 16px;
+  position: relative;
+  word-break: break-word;
+}
+
+.staybot-msg.bot .staybot-bubble {
+  background: #FFFFFF;
+  color: #0F172A;
+  border: 1px solid #E2E8F0;
+  border-bottom-left-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.staybot-msg.user .staybot-bubble {
+  background: linear-gradient(135deg, #2563EB, #1D4ED8);
+  color: #FFFFFF;
+  border-bottom-right-radius: 4px;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+}
+
+.staybot-time {
+  font-size: 10.5px;
+  color: #94A3B8;
+  margin-top: 4px;
+  padding: 0 4px;
+}
+.staybot-msg.user .staybot-time {
+  align-self: flex-end;
+}
+
+/* Embedded Property Card inside Chat Bubble */
+.staybot-prop-mini-card {
+  margin-top: 10px;
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.2s;
+}
+
+.staybot-prop-mini-card:hover {
+  border-color: #2563EB;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.12);
+}
+
+.staybot-prop-mini-img {
+  width: 100%;
+  height: 90px;
+  object-fit: cover;
+}
+
+.staybot-prop-mini-info {
+  padding: 8px 10px;
+}
+
+.staybot-prop-mini-title {
+  font-weight: 700;
+  font-size: 12.5px;
+  color: #0F172A;
+  margin-bottom: 2px;
+}
+
+.staybot-prop-mini-meta {
+  font-size: 11px;
+  color: #64748B;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.staybot-prop-badge {
+  font-size: 9.5px;
+  font-weight: 700;
+  color: #10B981;
+  background: #ECFDF5;
+  padding: 2px 5px;
+  border-radius: 4px;
+}
+
+/* Typing indicator */
+.staybot-typing {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 10px 14px;
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 16px;
+  border-bottom-left-radius: 4px;
+  width: fit-content;
+}
+
+.staybot-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #2563EB;
+  opacity: 0.4;
+  animation: staybotBlink 1.4s infinite both;
+}
+
+.staybot-dot:nth-child(2) { animation-delay: 0.2s; }
+.staybot-dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes staybotBlink {
+  0%, 80%, 100% { opacity: 0.3; transform: scale(0.8); }
+  40% { opacity: 1; transform: scale(1.1); }
+}
+
+/* Quick Suggestion Chips */
+.staybot-chips-wrap {
+  padding: 8px 14px;
+  background: #FFFFFF;
+  border-top: 1px solid #F1F5F9;
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.staybot-chips-wrap::-webkit-scrollbar {
+  display: none;
+}
+
+.staybot-chip {
+  background: #F1F5F9;
+  border: 1px solid #E2E8F0;
+  color: #334155;
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 5px 11px;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.staybot-chip:hover {
+  background: #EFF6FF;
+  border-color: #2563EB;
+  color: #2563EB;
+}
+
+/* Chat Input Footer */
+.staybot-footer {
+  padding: 10px 14px;
+  background: #FFFFFF;
+  border-top: 1px solid #E2E8F0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.staybot-input {
+  flex: 1;
+  padding: 10px 14px;
+  border-radius: 100px;
+  border: 1px solid #CBD5E1;
+  background: #F8FAFC;
+  font-size: 13.5px;
+  color: #0F172A;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.staybot-input:focus {
+  border-color: #2563EB;
+  background: #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.staybot-send-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #2563EB;
+  color: #FFFFFF;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.staybot-send-btn:hover {
+  background: #1D4ED8;
+  transform: scale(1.05);
+}
+
+.staybot-send-btn:disabled {
+  background: #CBD5E1;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* API Key Settings Drawer */
+.staybot-settings-drawer {
+  position: absolute;
+  inset: 0;
+  background: #FFFFFF;
+  z-index: 10;
+  padding: 20px;
+  display: none;
+  flex-direction: column;
+  animation: staybotFadeIn 0.2s ease;
+}
+
+.staybot-settings-drawer.open {
+  display: flex;
+}
+
+@keyframes staybotFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 480px) {
+  .staybot-window {
+    right: 12px;
+    bottom: 84px;
+    width: calc(100vw - 24px);
+    height: calc(100vh - 100px);
+  }
+  .staybot-trigger {
+    right: 18px;
+    bottom: 18px;
+    width: 54px;
+    height: 54px;
+    font-size: 22px;
+  }
+}

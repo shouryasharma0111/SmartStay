@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tenant Profile · SmartStay</title>
+<link rel="stylesheet" href="SmartStay TenantDashboard (CSS).css">
+<!-- SmartStay AI Chatbot Widget -->
+<link rel="stylesheet" href="smartstay-chatbot.css">
+</head>
+<body>
+
+  <div class="tp-bg-photo" id="bgPhoto"></div>
+  <div class="tp-bg-tint"></div>
+
+  <!-- ---------- sticky header + touch slide bar ---------- -->
+  <div class="tp-topbar">
+    <div class="tp-topbar-inner">
+      <div class="tp-brand-row">
+        <div style="display: flex; align-items: center; gap: 20px;">
+          <div>
+            <p class="tp-eyebrow">SmartStay · Tenant profile</p>
+            <h1 class="tp-title tp-display">Build your profile</h1>
+          </div>
+          <a href="Smartstay PropertyListing (HTML).html" style="background: #215FDC; color: white; padding: 8px 16px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.85rem;">View Properties</a>
+        </div>
+        <div class="tp-ring" title="0% complete">
+          <svg width="44" height="44">
+            <circle cx="22" cy="22" r="18" fill="none" stroke="#E1EDFE" stroke-width="4"></circle>
+            <circle id="ringProgress" cx="22" cy="22" r="18" fill="none" stroke="#215FDC" stroke-width="4"
+              stroke-dasharray="113.1" stroke-dashoffset="113.1" stroke-linecap="round"
+              style="transition:stroke-dashoffset .5s ease"></circle>
+          </svg>
+          <div class="tp-ring-pct" id="ringPct">0%</div>
+        </div>
+      </div>
+
+      <div class="tp-slidebar" id="slidebar">
+        <div class="tp-track"></div>
+        <div class="tp-track-fill" id="trackFill"></div>
+        <div class="tp-slide-indicator" id="slideIndicator"></div>
+        <!-- pill buttons injected by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ---------- content: hero + single active panel, floating over the blurred photo ---------- -->
+  <div class="tp-shell">
+    <div class="tp-hero">
+      <div class="tp-avatar-wrap">
+        <svg width="56" height="56">
+          <circle cx="28" cy="28" r="24" fill="none" stroke="#E1EDFE" stroke-width="3.5"></circle>
+          <circle id="avatarProgress" cx="28" cy="28" r="24" fill="none" stroke="#3E7BEC" stroke-width="3.5"
+            stroke-dasharray="150.8" stroke-dashoffset="150.8" stroke-linecap="round"
+            style="transition:stroke-dashoffset .5s ease"></circle>
+        </svg>
+        <div class="tp-avatar tp-display" id="avatarInitials">YN</div>
+      </div>
+      <div class="tp-hero-copy">
+        <h1 class="tp-display" id="heroName">Your tenant profile</h1>
+        <div class="tp-hero-meta">
+          <span id="heroLocality"></span>
+          <span id="heroMoveIn"></span>
+          <span id="heroFields"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tp-panel-wrap">
+      <div class="tp-card" id="panelCard"></div>
+    </div>
+    <section class="tp-verified-properties" aria-labelledby="tenantVerificationTitle">
+      <div class="tp-verified-heading">
+        <div>
+          <p class="tp-eyebrow">Listing trust</p>
+          <h2 class="tp-display" id="tenantVerificationTitle">Verified properties</h2>
+          <p>Verification status is shown for properties in the catalog. Tenants cannot start owner document verification.</p>
+        </div>
+        <a href="Smartstay PropertyListing (HTML).html">Browse properties</a>
+      </div>
+      <label class="tp-verified-filter"><input type="checkbox" id="tenantVerifiedOnly"> Show production-verified properties only</label>
+      <div class="tp-verified-list" id="tenantVerificationList" aria-live="polite"></div>
+    </section>
+  </div>
+
+  <!-- ---------- nudge while incomplete ---------- -->
+  <div class="tp-nudge" id="nudge">
+    <div class="tp-nudge-pill">
+      <span class="tp-nudge-track"><span class="tp-nudge-fill" id="nudgeFill"></span></span>
+      <span id="nudgeText">0% complete — submit unlocks at 100%</span>
+    </div>
+  </div>
+
+  <!-- ---------- submit dock ---------- -->
+  <div class="tp-submit-dock">
+    <div class="tp-submit-card" id="submitCard">
+      <div class="tp-submit-text">
+        <b>Profile complete</b>
+        <span>All sections verified and ready to go live</span>
+      </div>
+      <button class="tp-submit-btn" type="button" id="submitBtn">
+        Submit profile ${ICON.arrowUpRight}
+      </button>
+    </div>
+  </div>
+
+<script type="module" src="SmartStay Tenantdashboard (Javascript).js"></script>
+<!-- SmartStay AI Chatbot Logic -->
+<script type="module" src="smartstay-chatbot.js"></script>
+</body>
+</html>

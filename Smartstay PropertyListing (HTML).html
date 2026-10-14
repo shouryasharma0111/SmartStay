@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>SmartStay - Smart Property Search</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#e0e3e5",
+                        "surface-container-high": "#e6e8ea",
+                        "tertiary-fixed": "#6bff8f",
+                        "on-tertiary-fixed": "#002109",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-dim": "#d8dadc",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "on-primary-fixed": "#00174b",
+                        "on-primary-container": "#eeefff",
+                        "on-tertiary-fixed-variant": "#005321",
+                        "inverse-primary": "#b4c5ff",
+                        "status-info": "#5E23DC",
+                        "secondary": "#565e74",
+                        "on-secondary-fixed-variant": "#3f465c",
+                        "surface-container": "#eceef0",
+                        "on-secondary-container": "#5c647a",
+                        "background": "#f7f9fb",
+                        "on-error": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-secondary": "#ffffff",
+                        "surface-container-low": "#f2f4f6",
+                        "on-surface": "#191c1e",
+                        "secondary-fixed": "#dae2fd",
+                        "surface-container-highest": "#e0e3e5",
+                        "primary": "#004ac6",
+                        "primary-container": "#2563eb",
+                        "on-error-container": "#93000a",
+                        "surface": "#f7f9fb",
+                        "surface-tint": "#0053db",
+                        "brand-accent-green": "#22C55E",
+                        "tertiary": "#006229",
+                        "on-surface-variant": "#434655",
+                        "tertiary-container": "#007e37",
+                        "surface-bright": "#f7f9fb",
+                        "error-container": "#ffdad6",
+                        "on-background": "#191c1e",
+                        "tertiary-fixed-dim": "#4ae176",
+                        "secondary-container": "#dae2fd",
+                        "outline": "#737686",
+                        "surface-white": "#FFFFFF",
+                        "secondary-fixed-dim": "#bec6e0",
+                        "on-tertiary-container": "#c1ffc5",
+                        "status-critical": "#F22B68",
+                        "inverse-on-surface": "#eff1f3",
+                        "primary-fixed": "#dbe1ff",
+                        "on-secondary-fixed": "#131b2e",
+                        "outline-variant": "#c3c6d7",
+                        "inverse-surface": "#2d3133",
+                        "on-primary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "40px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "label-bold": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-sm": ["Plus Jakarta Sans"],
+                        "body-md": ["Inter"],
+                        "display-lg-mobile": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", { "lineHeight": "60px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "label-bold": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="SmartStay Propertylisting (CSS).css">
+    <!-- SmartStay AI Chatbot Widget -->
+    <link rel="stylesheet" href="smartstay-chatbot.css">
+</head>
+<body class="bg-surface text-on-surface font-body-md antialiased min-h-screen flex flex-col">
+    <!-- TopNavBar -->
+    <nav class="bg-surface-white/80 glass-nav text-primary font-body-md text-body-md font-label-bold text-label-bold sticky top-0 w-full z-50 shadow-sm shadow-sm">
+        <div class="flex justify-between items-center max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop h-20">
+            <!-- Brand -->
+            <div class="flex items-center gap-2">
+                <img alt="SmartStay Logo" class="h-8 w-8 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrZ9cQ8EDFjA27Vjg63MhCy01hOSag2IDWPdgrdhvWI7PxJxpdfzDBkeOoOjBNxFxh_GC94XEBJRrwsW9T0QAxBt9WLyTRsv6qfgjeaQ3mofBN_rfhEh2XVD2fdWLFH3eMe_fj9HngKKvxQjDxe-mX8XUUn7QC0tM6lut2XOuQ0J1Sx8eIX54Jxj-q3v_G7dDip98b2TkPzB6KS7yBH8hTIH1b6k30LIqgh1hSKq7P9G5EilNPyrQA"/>
+                <span class="font-display-lg text-headline-sm md:text-headline-md font-bold tracking-tight text-primary">SmartStay</span>
+            </div>
+            <!-- Nav Links (Desktop) -->
+            <div class="hidden md:flex items-center gap-8">
+                <a class="text-on-secondary-container hover:text-primary transition-colors duration-200" href="SmartStay Homepage(HTML).html">Home</a>
+                <a class="text-primary border-b-2 border-primary pb-1 font-semibold" href="#">Properties</a>
+                <a class="text-on-secondary-container hover:text-primary transition-colors duration-200" href="#">PG Finder</a>
+                <a class="text-on-secondary-container hover:text-primary transition-colors duration-200" href="#">Rentals</a>
+                <a class="text-on-secondary-container hover:text-primary transition-colors duration-200" href="#">About</a>
+                <a class="text-on-secondary-container hover:text-primary transition-colors duration-200" href="#">Contact</a>
+            </div>
+            <!-- Actions -->
+            <div class="hidden md:flex items-center gap-4">
+                <a href="#" id="backToDashboard" class="px-4 py-2 text-on-surface hover:text-primary transition-colors duration-200 font-label-bold text-label-bold">My Dashboard</a>
+                <button class="px-4 py-2 bg-primary-container text-on-primary rounded-lg hover:bg-primary transition-colors duration-200 font-label-bold text-label-bold">Register</button>
+            </div>
+            <!-- Mobile Menu Toggle -->
+            <button class="md:hidden text-primary p-2">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Smart Search Header -->
+    <header class="bg-primary text-white py-12 px-margin-mobile md:px-margin-desktop">
+        <div class="max-w-container-max mx-auto text-center">
+            <h1 class="font-display-lg text-display-lg-mobile md:text-display-lg mb-6">Find Your Perfect Place</h1>
+            <div class="flex flex-col md:flex-row items-center justify-center gap-4 max-w-3xl mx-auto">
+                <div class="relative w-full">
+                    <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-white/70">search</span>
+                    <input id="smartSearchInput" class="w-full pl-12 pr-4 py-4 rounded-xl text-on-surface focus:outline-none focus:ring-4 focus:ring-primary-fixed-dim text-body-md shadow-xl" placeholder="Search city, locality, college, workplace or landmark" type="text"/>
+                </div>
+                <div class="flex gap-3 w-full md:w-auto">
+                    <button id="useMyLocationBtn" class="flex items-center justify-center gap-2 px-6 py-4 bg-white/20 hover:bg-white/30 transition-colors rounded-xl font-label-bold text-label-bold whitespace-nowrap">
+                        <span class="material-symbols-outlined text-[20px]">my_location</span>
+                        Use My Location
+                    </button>
+                    <button id="searchBtn" class="flex-grow md:flex-grow-0 px-10 py-4 bg-white text-primary hover:bg-surface-variant transition-colors rounded-xl font-label-bold text-label-bold font-bold shadow-lg">
+                        Search
+                    </button>
+                </div>
+            </div>
+            <div class="mt-4 flex flex-wrap justify-center gap-2 text-white/80 text-body-sm">
+                <span>Try:</span>
+                <button class="suggestion-chip hover:text-white transition-colors underline decoration-white/30">ABES Engineering College</button>
+                <button class="suggestion-chip hover:text-white transition-colors underline decoration-white/30">Ghaziabad</button>
+                <button class="suggestion-chip hover:text-white transition-colors underline decoration-white/30">Noida Sector 62</button>
+                <button class="suggestion-chip hover:text-white transition-colors underline decoration-white/30">Near metro station</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow max-w-container-max mx-auto w-full px-margin-mobile md:px-margin-desktop py-12 flex flex-col md:flex-row gap-gutter">
+        <!-- Filter Sidebar -->
+        <aside id="filterSidebar" class="w-full md:w-1/4 flex-shrink-0">
+            <div class="bg-surface-white rounded-xl card-shadow p-6 sticky top-28">
+                <div class="flex justify-between items-center mb-6 border-b border-surface-variant pb-4">
+                    <h2 class="font-headline-sm text-headline-sm text-on-surface">Smart Filters</h2>
+                    <button id="clearFiltersBtn" class="text-body-sm text-primary hover:underline">Clear All</button>
+                </div>
+
+                <!-- Property Type -->
+                <div class="mb-6">
+                    <label class="block font-label-bold text-label-bold text-on-surface-variant mb-3">Property Type</label>
+                    <select id="filterPropertyType" class="w-full px-3 py-2 border border-surface-variant rounded-lg focus:outline-none focus:border-primary text-body-sm bg-surface-bright">
+                        <option value="All">All</option>
+                        <option value="PG">PG</option>
+                        <option value="Room">Room</option>
+                        <option value="Flat">Flat</option>
+                        <option value="Apartment">Apartment</option>
+                        <option value="Hostel">Hostel</option>
+                    </select>
+                </div>
+
+                <!-- Budget -->
+                <div class="mb-6">
+                    <label class="block font-label-bold text-label-bold text-on-surface-variant mb-3">Budget (Monthly Rent)</label>
+                    <div class="flex items-center gap-2">
+                        <input id="filterMinRent" class="w-full px-3 py-2 border border-surface-variant rounded-lg focus:outline-none focus:border-primary text-body-sm bg-surface-bright" placeholder="Min" type="number"/>
+                        <span class="text-outline">-</span>
+                        <input id="filterMaxRent" class="w-full px-3 py-2 border border-surface-variant rounded-lg focus:outline-none focus:border-primary text-body-sm bg-surface-bright" placeholder="Max" type="number"/>
+                    </div>
+                </div>
+
+                <!-- Distance -->
+                <div class="mb-6">
+                    <label class="block font-label-bold text-label-bold text-on-surface-variant mb-3">Distance</label>
+                    <select id="filterDistance" class="w-full px-3 py-2 border border-surface-variant rounded-lg focus:outline-none focus:border-primary text-body-sm bg-surface-bright">
+                        <option value="Any">Any Distance</option>
+                        <option value="1">1 km</option>
+                        <option value="3">3 km</option>
+                        <option value="5">5 km</option>
+                        <option value="10">10 km</option>
+                    </select>
+                </div>
+
+                <!-- Gender -->
+                <div class="mb-6">
+                    <label class="block font-label-bold text-label-bold text-on-surface-variant mb-3">Gender Preference</label>
+                    <div class="flex flex-col gap-2">
+                        <label class="flex items-center gap-2 cursor-pointer group">
+                            <input name="filterGender" value="Any" checked class="rounded border-surface-variant text-primary focus:ring-primary w-4 h-4" type="radio"/>
+                            <span class="text-body-sm text-on-surface group-hover:text-primary transition-colors">Any Gender</span>
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer group">
+                            <input name="filterGender" value="Boys" class="rounded border-surface-variant text-primary focus:ring-primary w-4 h-4" type="radio"/>
+                            <span class="text-body-sm text-on-surface group-hover:text-primary transition-colors">Boys</span>
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer group">
+                            <input name="filterGender" value="Girls" class="rounded border-surface-variant text-primary focus:ring-primary w-4 h-4" type="radio"/>
+                            <span class="text-body-sm text-on-surface group-hover:text-primary transition-colors">Girls</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Sharing -->
+                <div class="mb-6">
+                    <label class="block font-label-bold text-label-bold text-on-surface-variant mb-3">Sharing Option</label>
+                    <select id="filterSharing" class="w-full px-3 py-2 border border-surface-variant rounded-lg focus:outline-none focus:border-primary text-body-sm bg-surface-bright">
+                        <option value="Any">Any</option>
+                        <option value="Single">Single</option>
+                        <option value="Double">Double</option>
+                        <option value="Triple">Triple</option>
+                    </select>
+                </div>
+
+                <!-- Amenities -->
+                <div class="mb-6">
+                    <label class="block font-label-bold text-label-bold text-on-surface-variant mb-3">Amenities</label>
+                    <div class="grid grid-cols-2 gap-2">
+                        <label class="flex items-center gap-2 cursor-pointer group">
+                            <input name="filterAmenity" value="Wi-Fi" class="rounded border-surface-variant text-primary focus:ring-primary w-4 h-4" type="checkbox"/>
+                            <span class="text-body-sm text-on-surface group-hover:text-primary transition-colors">Wi-Fi</span>
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer group">
+                            <input name="filterAmenity" value="AC" class="rounded border-surface-variant text-primary focus:ring-primary w-4 h-4" type="checkbox"/>
+                            <span class="text-body-sm text-on-surface group-hover:text-primary transition-colors">AC</span>
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer group">
+                            <input name="filterAmenity" value="Food" class="rounded border-surface-variant text-primary focus:ring-primary w-4 h-4" type="checkbox"/>
+                            <span class="text-body-sm text-on-surface group-hover:text-primary transition-colors">Food</span>
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer group">
+                            <input name="filterAmenity" value="Parking" class="rounded border-surface-variant text-primary focus:ring-primary w-4 h-4" type="checkbox"/>
+                            <span class="text-body-sm text-on-surface group-hover:text-primary transition-colors">Parking</span>
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer group">
+                            <input name="filterAmenity" value="Laundry" class="rounded border-surface-variant text-primary focus:ring-primary w-4 h-4" type="checkbox"/>
+                            <span class="text-body-sm text-on-surface group-hover:text-primary transition-colors">Laundry</span>
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer group">
+                            <input name="filterAmenity" value="Power Backup" class="rounded border-surface-variant text-primary focus:ring-primary w-4 h-4" type="checkbox"/>
+                            <span class="text-body-sm text-on-surface group-hover:text-primary transition-colors">Backup</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Other -->
+                <div class="mb-6 flex flex-col gap-3">
+                    <label class="flex items-center gap-2 cursor-pointer group">
+                        <input id="filterVerified" class="rounded border-surface-variant text-primary focus:ring-primary w-4 h-4" type="checkbox"/>
+                        <span class="text-body-sm text-on-surface group-hover:text-primary transition-colors">Production-verified listings only</span>
+                    </label>
+                    <label class="flex items-center gap-2 cursor-pointer group">
+                        <input id="filterAvailable" class="rounded border-surface-variant text-primary focus:ring-primary w-4 h-4" type="checkbox"/>
+                        <span class="text-body-sm text-on-surface group-hover:text-primary transition-colors">Available Now</span>
+                    </label>
+                </div>
+
+                <button id="applyFiltersBtn" class="w-full py-3 bg-primary-container text-on-primary rounded-xl font-label-bold text-label-bold hover:bg-primary transition-colors duration-200 mt-4 font-bold shadow-md">
+                    Apply Smart Filters
+                </button>
+            </div>
+        </aside>
+
+        <!-- Results + Map Area -->
+        <section class="w-full md:w-3/4 flex flex-col md:flex-row gap-6">
+            <!-- Property Results -->
+            <div class="flex-grow flex flex-col gap-6" id="resultsSection">
+                <!-- Header/Sort -->
+                <div class="flex justify-between items-center bg-surface-white card-shadow rounded-xl p-4">
+                    <div id="resultsCount">
+                        <h1 class="font-headline-md text-headline-sm md:text-headline-md text-on-surface font-semibold">Properties for Rent</h1>
+                        <p class="text-body-sm text-on-surface-variant mt-1">Showing results based on your preferences</p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-body-sm text-on-surface-variant hidden md:inline">Sort by:</span>
+                        <select id="sortProperties" class="border-surface-variant rounded-lg text-body-sm focus:border-primary focus:ring-1 focus:ring-primary bg-surface-bright py-2 pl-3 pr-8">
+                            <option value="Relevance">Relevance</option>
+                            <option value="Rent: Low to High">Rent: Low to High</option>
+                            <option value="Rent: High to Low">Rent: High to Low</option>
+                            <option value="Distance">Distance</option>
+                            <option value="Rating">Rating</option>
+                            <option value="Newest">Newest</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Grid -->
+                <div id="propertiesGrid" class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <!-- Property cards will be injected here -->
+                </div>
+
+                <!-- Empty State -->
+                <div id="emptyState" class="hidden col-span-full text-center py-20 bg-surface-white rounded-xl card-shadow">
+                    <span class="material-symbols-outlined text-outline text-6xl mb-4">search_off</span>
+                    <h3 class="font-headline-sm text-on-surface mb-2">No properties found in this area</h3>
+                    <p class="text-body-sm text-on-surface-variant mb-6">Try adjusting your filters or searching in a different locality.</p>
+                    <button id="resetFiltersBtn" class="px-6 py-2 bg-primary text-white rounded-lg font-label-bold hover:bg-primary-container transition-colors">Clear All Filters</button>
+                </div>
+
+                <!-- Loading State -->
+                <div id="loadingState" class="hidden col-span-full text-center py-20">
+                    <div class="inline-block animate-spin rounded-full h-12 w-12 border-4 border-surface-variant border-t-primary"></div>
+                    <p class="text-body-sm text-on-surface-variant mt-4">Searching for the best matches...</p>
+                </div>
+            </div>
+
+            <!-- Property Map -->
+            <div class="hidden md:block w-1/2 sticky top-28 h-[calc(100vh-12rem)] bg-surface-container rounded-xl overflow-hidden shadow-inner border border-surface-variant">
+                <div id="propertyMap" class="w-full h-full"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Mobile Filter Toggle -->
+    <button id="mobileFilterToggle" class="md:hidden fixed bottom-6 right-6 z-50 bg-primary text-white px-6 py-3 rounded-full shadow-2xl flex items-center gap-2 font-label-bold font-bold">
+        <span class="material-symbols-outlined">tune</span>
+        Filters
+    </button>
+
+    <!-- Filter Drawer (Mobile) -->
+    <div id="filterDrawer" class="hidden fixed inset-0 z-[60] bg-black/50 backdrop-blur-sm transition-opacity duration-300">
+        <div class="absolute right-0 top-0 h-full w-80 bg-surface-white shadow-2xl transform transition-transform duration-300 translate-x-full" id="drawerContent">
+            <div class="p-6 flex flex-col h-full">
+                <div class="flex justify-between items-center mb-6 border-b pb-4">
+                    <h2 class="font-headline-sm text-on-surface">Smart Filters</h2>
+                    <button id="closeDrawerBtn" class="text-on-surface">
+                        <span class="material-symbols-outlined">close</span>
+                    </button>
+                </div>
+                <div class="flex-grow overflow-y-auto pr-2" id="drawerFilters">
+                    <!-- Filters will be mirrored here from the sidebar -->
+                </div>
+                <button id="applyFiltersDrawerBtn" class="w-full py-4 bg-primary text-white rounded-xl font-bold mt-6">
+                    Apply Filters
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-surface-container-low text-primary font-body-sm text-body-sm font-label-sm text-label-sm w-full py-12 border-t border-outline-variant flat">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-gutter max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+            <div class="col-span-1 md:col-span-1">
+                <div class="flex items-center gap-2 mb-4">
+                    <img alt="SmartStay Logo" class="h-6 w-6 object-contain grayscale opacity-70" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrZ9cQ8EDFjA27Vjg63MhCy01hOSag2IDWPdgrdhvWI7PxJxpdfzDBkeOoOjBNxFxh_GC94XEBJRrwsW9T0QAxBt9WLyTRsv6qfgjeaQ3mofBN_rfhEh2XVD2fdWLFH3eMe_fj9HngKKvxQjDxe-mX8XUUn7QC0tM6lut2XOuQ0J1Sx8eIX54Jxj-q3v_G7dDip98b2TkPzB6KS7yBH8hTIH1b6k30LIqgh1hSKq7P9G5EilNPyrQA"/>
+                    <span class="font-headline-sm text-headline-sm text-on-surface font-semibold">SmartStay</span>
+                </div>
+                <p class="text-on-surface-variant text-body-sm">Simplifying your search for the perfect rental home and co-living spaces.</p>
+            </div>
+            <div class="col-span-1 md:col-span-2 flex flex-col sm:flex-row justify-between gap-8 md:px-8">
+                <div>
+                    <h4 class="font-bold text-on-surface mb-4">Company</h4>
+                    <ul class="flex flex-col gap-3">
+                        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">About Us</a></li>
+                        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Career</a></li>
+                        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Partner with Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-on-surface mb-4">Support</h4>
+                    <ul class="flex flex-col gap-3">
+                        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Help Center</a></li>
+                        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a></li>
+                        <li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-span-1">
+                <h4 class="font-bold text-on-surface mb-4">Connect With Us</h4>
+                <div class="flex gap-4">
+                    <a class="w-10 h-10 rounded-full bg-surface-white card-shadow flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+                        <span class="material-symbols-outlined">mail</span>
+                    </a>
+                    <a class="w-10 h-10 rounded-full bg-surface-white card-shadow flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+                        <span class="material-symbols-outlined">phone</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop mt-12 pt-8 border-t border-surface-variant text-center md:text-left">
+            <p class="text-on-surface-variant">© 2024 SmartStay. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyACfSn5lR3DRYexF-buBP2dJf-I2DzHUBY&amp;libraries=places"></script>
+    <script type="module" src="SmartStay Propertylisting (Javascript).js"></script>
+    <!-- SmartStay AI Chatbot Logic -->
+    <script type="module" src="smartstay-chatbot.js"></script>
+</body>
+</html>

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<!-- saved from url=(0085)file:///C:/Users/shourya%20sharma/Downloads/Basera%20%E2%80%94%20Owner%20Profile.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Basera — Owner Profile</title>
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="SmartStay OwnerDashboard (CSS).css">
+<!-- SmartStay AI Chatbot Widget -->
+<link rel="stylesheet" href="smartstay-chatbot.css">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <lineargradient id="heroGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#4c8dff"></stop>
+      <stop offset="100%" stop-color="#123fbe"></stop>
+    </lineargradient>
+  </defs>
+</svg>
+
+<div class="topstrip">
+  <div class="wordmark"><span class="dot"></span>Smart Stay<small>owner console</small></div>
+  <div class="topstrip-right">
+    <a href="Smartstay PropertyListing (HTML).html" style="color: white; text-decoration: none; margin-right: 15px; font-size: 0.9rem; font-weight: 500;">View Listings</a>
+    <div class="status-chip" id="statusChip"><span class="pulse"></span><span id="statusText">Profile in progress</span></div>
+  </div>
+</div>
+
+<!-- Touch slide bar -->
+<nav class="navbar" id="navbar">
+  <div class="navbar-inner">
+    <div class="ring-avatar">
+      <svg viewBox="0 0 44 44"><circle class="track" cx="22" cy="22" r="19"></circle><circle class="fill" id="navRingFill" cx="22" cy="22" r="19" stroke-dasharray="119.4" stroke-dashoffset="119.4" style="stroke-dashoffset: 84.774;"></circle></svg>
+      <div class="core" id="navInitials">🏠</div>
+    </div>
+    <div class="slidebar-wrap">
+      <div class="slidebar" id="slidebar">
+        <button class="pill active" data-target="personal"><span class="check" data-check="personal"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-6" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>Personal</button>
+        <button class="pill" data-target="contact"><span class="check" data-check="contact"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-6" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>Contact</button>
+        <button class="pill" data-target="address"><span class="check" data-check="address"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-6" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>Address</button>
+        <button class="pill" data-target="properties"><span class="check done" data-check="properties"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-6" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>Portfolio</button>
+        <button class="pill" data-target="documents"><span class="check" data-check="documents"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-6" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>Documents</button>
+        <button class="pill" data-target="preferences"><span class="check done" data-check="preferences"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-6" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>Preferences</button>
+      </div>
+    </div>
+    <div class="navbar-cta"><button class="publish-btn" id="publishBtnTop">Publish profile</button></div>
+  </div>
+  <div class="rail"><div class="rail-fill" id="railFill" style="width: 29%;"></div></div>
+</nav>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-avatar">
+      <svg viewBox="0 0 104 104"><circle class="track" cx="52" cy="52" r="47"></circle><circle class="fill" id="heroRingFill" cx="52" cy="52" r="47" stroke-dasharray="295.3" stroke-dashoffset="295.3" style="stroke-dashoffset: 209.663;"></circle></svg>
+      <div class="core" id="heroInitials">🏠</div>
+      <div class="pct" id="heroPct">0% complete</div>
+    </div>
+    <div class="hero-mid">
+      <h1 id="heroName" class="placeholder-text">Add your name below</h1>
+      <div class="role">
+        <span class="badge">🏠 Property Owner</span>
+        <span class="badge" style="background:var(--success-tint); color:var(--success);">Since 2022</span>
+      </div>
+      <p class="tag placeholder-text" id="heroBio">Your bio will appear here once you write it in the Personal section.</p>
+      <div class="hero-stats">
+        <div class="stat"><b>2</b><span>Listings</span></div>
+        <div class="stat"><b>96%</b><span>Response rate</span></div>
+        <div class="stat"><b>4.8</b><span>Tenant rating</span></div>
+      </div>
+    </div>
+    <div class="hero-side">
+      <button class="edit-photo">📷 Change photo</button>
+    </div>
+  </section>
+
+  <div class="panel-stage" id="panelStage">
+
+  <!-- PERSONAL -->
+  <section class="section active-panel" id="personal">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow"><span class="stem"></span>Basics</div>
+        <h2>Personal details</h2>
+        <p class="desc">Tenants see your name and photo on every listing — keep it accurate.</p>
+      </div>
+      <div class="section-status" data-status="personal"><span class="sdot"></span><span class="stxt">Not started</span></div>
+    </div>
+    <div class="grid" data-section="personal">
+      <div class="field"><label>Full name</label><input type="text" class="trk" id="fullNameInput" placeholder="As per your ID" required=""></div>
+      <div class="field"><label>Date of birth</label><input type="date" class="trk" required=""></div>
+      <div class="field"><label>Gender</label>
+        <select class="trk" required="">
+          <option value="">Select</option>
+          <option>Male</option><option>Female</option><option>Other</option><option>Prefer not to say</option>
+        </select>
+      </div>
+      <div class="field"><label>Languages spoken <span class="opt">optional</span></label><input type="text" placeholder="Hindi, English"></div>
+      <div class="field span2"><label>About you</label><textarea class="trk" id="aboutInput" placeholder="A short line tenants will see on your listings — how long you&#39;ve been renting out, what you value in tenants, etc." required=""></textarea></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section reveal in" id="contact">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow"><span class="stem"></span>Verification</div>
+        <h2>Contact &amp; verification</h2>
+        <p class="desc">Verified badges build trust and improve your listing rank.</p>
+      </div>
+      <div class="section-status" data-status="contact"><span class="sdot"></span><span class="stxt">Not started</span></div>
+    </div>
+    <div class="grid" data-section="contact">
+      <div class="field">
+        <label>Mobile number</label>
+        <div class="inline-verify">
+          <input type="tel" class="trk" placeholder="+91 98xxxxxx10" required="">
+          <button class="verify-btn" data-verify="">Verify</button>
+        </div>
+      </div>
+      <div class="field">
+        <label>Email address</label>
+        <div class="inline-verify">
+          <input type="email" class="trk" placeholder="you@email.com" required="">
+          <button class="verify-btn" data-verify="">Verify</button>
+        </div>
+      </div>
+      <div class="field"><label>Alternate number <span class="opt">optional</span></label><input type="tel" placeholder="Backup contact"></div>
+      <div class="field"><label>Preferred contact time <span class="opt">optional</span></label>
+        <select><option value="">Anytime</option><option>Mornings</option><option>Evenings</option><option>Weekends only</option></select>
+      </div>
+    </div>
+  </section>
+
+  <!-- ADDRESS -->
+  <section class="section reveal in" id="address">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow"><span class="stem"></span>Location</div>
+        <h2>Correspondence address</h2>
+        <p class="desc">Used for official notices only — never shown publicly on listings.</p>
+      </div>
+      <div class="section-status" data-status="address"><span class="sdot"></span><span class="stxt">Not started</span></div>
+    </div>
+    <div class="grid" data-section="address">
+      <div class="field span2"><label>Address line</label><input type="text" class="trk" placeholder="House no., street, locality" required=""></div>
+      <div class="field"><label>City</label><input type="text" class="trk" placeholder="New Delhi" required=""></div>
+      <div class="field"><label>State</label><input type="text" class="trk" placeholder="Delhi" required=""></div>
+      <div class="field"><label>PIN code</label><input type="text" class="trk" placeholder="110017" required=""></div>
+      <div class="field"><label>Landmark <span class="opt">optional</span></label><input type="text" placeholder="Near metro station"></div>
+    </div>
+  </section>
+
+  <!-- PROPERTIES -->
+  <section class="section reveal in" id="properties">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow"><span class="stem"></span>Portfolio</div>
+        <h2>Your properties</h2>
+        <p class="desc">At least one active listing is required to publish your profile. Add, remove or reprice a listing whenever you like.</p>
+      </div>
+      <div class="section-status complete" data-status="properties"><span class="sdot"></span><span class="stxt">Complete</span></div>
+    </div>
+    <div class="prop-list" data-section="properties" id="propList">
+      <div class="prop-card" data-prop-card data-icon="🏢">
+        <div class="prop-icon">🏢</div>
+        <div class="prop-info"><h4>Shanti PG for Women — Malviya Nagar</h4><p>Single &amp; twin sharing · 12 beds · Verified</p></div>
+        <div class="prop-rent-wrap">
+          <div class="prop-rent" data-rent-display data-unit="per bed / mo">₹9,500<span>per bed / mo</span></div>
+          <input class="prop-rent-input" data-rent-input type="number" min="0" value="9500" style="display:none;">
+        </div>
+        <div class="prop-actions">
+          <button class="prop-action-btn" data-edit-price title="Update price">✎</button>
+          <button class="prop-action-btn danger" data-remove-prop title="Remove property">🗑</button>
+        </div>
+      </div>
+      <div class="prop-card" data-prop-card data-icon="🏠">
+        <div class="prop-icon">🏠</div>
+        <div class="prop-info"><h4>2BHK Independent Flat — Saket</h4><p>Family / working professionals · Semi-furnished</p></div>
+        <div class="prop-rent-wrap">
+          <div class="prop-rent" data-rent-display data-unit="per month">₹28,000<span>per month</span></div>
+          <input class="prop-rent-input" data-rent-input type="number" min="0" value="28000" style="display:none;">
+        </div>
+        <div class="prop-actions">
+          <button class="prop-action-btn" data-edit-price title="Update price">✎</button>
+          <button class="prop-action-btn danger" data-remove-prop title="Remove property">🗑</button>
+        </div>
+      </div>
+    </div>
+    <div class="prop-empty" id="propEmpty">No properties yet — add your first listing below to complete this section.</div>
+    <div class="add-prop-form" id="addPropForm">
+      <div class="field"><label>Property name</label><input type="text" id="newPropName" placeholder="e.g. Green Nest PG — Rohini"></div>
+      <div class="field"><label>Type</label>
+        <select id="newPropType">
+          <option value="🏢">PG</option>
+          <option value="🏠">Independent flat</option>
+          <option value="🏬">Apartment / society</option>
+          <option value="🛏️">Shared room</option>
+        </select>
+      </div>
+      <div class="field"><label>Monthly rent (₹)</label><input type="number" id="newPropRent" min="0" placeholder="e.g. 15000"></div>
+      <div class="add-prop-form-actions">
+        <button type="button" class="add-prop-confirm" id="confirmAddProp">Add</button>
+        <button type="button" class="add-prop-cancel" id="cancelAddProp">Cancel</button>
+      </div>
+    </div>
+    <button class="add-prop" id="addPropBtn">＋ Add another property</button>
+  </section>
+
+  <!-- BANK / PAYOUT -->
+  
+
+  <!-- DOCUMENTS -->
+  <section class="section reveal in" id="documents">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow"><span class="stem"></span>KYC</div>
+        <h2>Identity &amp; ownership documents</h2>
+        <p class="desc">Reviewed within 24 hours. Accepted formats: JPG, PNG, PDF.</p>
+      </div>
+      <div class="section-status" data-status="documents"><span class="sdot"></span><span class="stxt">Not started</span></div>
+    </div>
+    <div class="digilocker-panel">
+      <div class="digilocker-copy">
+        <div class="digilocker-icon" aria-hidden="true">🔐</div>
+        <div>
+          <h3>Document Verification</h3>
+          <p>Verify documentation for one of your properties to improve trust in your listing.</p>
+        </div>
+      </div>
+      <div class="digilocker-controls">
+        <label for="verificationPropertySelect">Property</label>
+        <select id="verificationPropertySelect" aria-label="Property to verify"></select>
+        <label for="verificationDemoOutcome">Demo result</label>
+        <select id="verificationDemoOutcome" aria-label="Demo verification result">
+          <option value="MANUAL_REVIEW">Manual review</option>
+          <option value="VERIFIED">Matched (simulated)</option>
+          <option value="FAILED">Mismatch (simulated)</option>
+        </select>
+        <button type="button" class="digilocker-connect" id="verifyWithDigiLocker">Verify with DigiLocker</button>
+      </div>
+      <p class="digilocker-demo-note">Demo/Sandbox Verification only. No DigiLocker connection or government document retrieval occurs in this demo.</p>
+      <div class="digilocker-result" id="digilockerStatus" role="status" aria-live="polite">Add a property to start a demo verification.</div>
+    </div>
+    <div class="doc-grid" data-section="documents">
+      <div class="doc-tile" data-tile="">
+        <input type="file" class="trk-file">
+        <div class="tick">✓</div>
+        <div class="dicon">🪪</div>
+        <h5>Aadhaar card</h5><p>Front &amp; back</p>
+      </div>
+      <div class="doc-tile" data-tile="">
+        <input type="file" class="trk-file">
+        <div class="tick">✓</div>
+        <div class="dicon">📄</div>
+        <h5>PAN card</h5><p>Clear scan</p>
+      </div>
+      <div class="doc-tile" data-tile="">
+        <input type="file" class="trk-file">
+        <div class="tick">✓</div>
+        <div class="dicon">🏘️</div>
+        <h5>Ownership proof</h5><p>Deed / tax receipt</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PREFERENCES -->
+  <section class="section reveal in" id="preferences">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow"><span class="stem"></span>Tenancy</div>
+        <h2>Preferences</h2>
+        <p class="desc">Fine-tune how tenants can find and reach you.</p>
+      </div>
+      <div class="section-status complete" data-status="preferences"><span class="sdot"></span><span class="stxt">Complete</span></div>
+    </div>
+    <div data-section="preferences">
+      <div class="field span2" style="margin-bottom:20px;">
+        <label>Preferred tenant type</label>
+        <div class="chipset">
+          <div class="chip-opt trk-chip sel" data-group="tenant">Students</div>
+          <div class="chip-opt trk-chip" data-group="tenant">Working professionals</div>
+          <div class="chip-opt trk-chip" data-group="tenant">Families</div>
+          <div class="chip-opt trk-chip" data-group="tenant">Any</div>
+        </div>
+      </div>
+      <div class="toggle-row">
+        <div><h5>Instant booking</h5><p>Let verified tenants book without approval</p></div>
+        <div class="switch trk-switch"></div>
+      </div>
+      <div class="toggle-row">
+        <div><h5>WhatsApp enquiries</h5><p>Receive enquiries directly on WhatsApp</p></div>
+        <div class="switch trk-switch on"></div>
+      </div>
+      <div class="toggle-row">
+        <div><h5>Show phone on listing</h5><p>Visible only to shortlisted tenants</p></div>
+        <div class="switch trk-switch"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="panel-footer-nav">
+    <button class="panel-step-btn prev" id="panelPrev">← Back</button>
+    <span class="panel-progress-label" id="panelStepLabel">Section 1 of 6</span>
+    <button class="panel-step-btn next" id="panelNext">Next →</button>
+  </div>
+  <div class="swipe-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 5l-5 7 5 7M16 5l5 7-5 7"/></svg>Swipe, or tap a section above, to move around</div>
+
+  </div><!-- /panel-stage -->
+
+  <!-- FINAL PANEL -->
+  <div class="final-panel">
+    <h3>Ready when you are</h3>
+    <p id="finalCopy">Complete the remaining sections above, in any order — the button lights up the moment your profile hits 100%.</p>
+    <button class="final-submit" id="finalSubmit" disabled="">Publish profile</button>
+    <div class="final-hint" id="finalHint">2 of 6 sections complete</div>
+  </div>
+
+</div>
+
+<div class="toast" id="toast"><span class="tdot"></span><span id="toastText">Profile published</span></div>
+
+<script type="module" src="SmartStay OwnerDashboard (Javascript).js"></script>
+<!-- SmartStay AI Chatbot Logic -->
+<script type="module" src="smartstay-chatbot.js"></script>
+
+</body></html>

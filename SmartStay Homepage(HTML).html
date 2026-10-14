@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartStay | Find Homes, Rentals &amp; PGs</title>
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Bootstrap 5 -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<link rel="stylesheet" href="SmartStay Homepage(CSS).css">
+<!-- SmartStay AI Chatbot Widget -->
+<link rel="stylesheet" href="smartstay-chatbot.css">
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar navbar-expand-lg navbar-custom" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand navbar-brand-custom" href="#">
+      <span class="logo-badge"><i class="fa-solid fa-house-chimney"></i></span>
+      SmartStay
+    </a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-label="Toggle navigation">
+      <i class="fa-solid fa-bars fs-4"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav mx-auto mb-3 mb-lg-0">
+        <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ================= HOME PREVIEW IMAGE 1 ================= -->
+<!-- Full-width rental/PG environment image standing in as the "Home" preview for now.
+     The rest of the homepage (search widget, listings, etc.) will be added in later steps. -->
+<section class="home-preview" id="home">
+  <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=1600&auto=format&fit=crop" alt="Modern rental apartment living room">
+  <div class="home-preview-overlay">
+    <div>
+      <h1>Find your next <span>home, rental or PG</span> — without the hassle.</h1>
+      <p>Verified listings, transparent pricing and zero brokerage on select properties across India.</p>
+      <div class="home-preview-actions">
+        <button class="btn btn-outline-light-custom" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
+        <button class="btn btn-primary-custom" data-bs-toggle="modal" data-bs-target="#registerModal">Register</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HOME PREVIEW IMAGE 2 ================= -->
+<section class="preview-two">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6 order-lg-2">
+        <div class="preview-two-img-wrap">
+          <img src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?q=80&w=1200&auto=format&fit=crop" alt="Cozy PG room interior">
+        </div>
+      </div>
+      <div class="col-lg-6 order-lg-1">
+        <div class="preview-two-caption">
+          <span class="eyebrow-custom">Built for students &amp; professionals</span>
+          <h2>PGs and rentals that feel like home</h2>
+          <p>From fully furnished PG rooms to family apartments, every listing on SmartStay is verified for a safe, comfortable move-in.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ================= AVAILABILITIES / AMENITIES ================= -->
+<section class="amenities-section">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-6 col-lg-3">
+        <div class="amenity-card">
+          <div class="amenity-icon food"><i class="fa-solid fa-utensils"></i></div>
+          <h6>Food Available</h6>
+          <p>Listings with breakfast, lunch &amp; dinner options.</p>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3">
+        <div class="amenity-card">
+          <div class="amenity-icon wifi"><i class="fa-solid fa-wifi"></i></div>
+          <h6>WiFi Ready</h6>
+          <p>High-speed internet included at most properties.</p>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3">
+        <div class="amenity-card">
+          <div class="amenity-icon trust"><i class="fa-solid fa-shield-heart"></i></div>
+          <h6>Trusted &amp; Verified</h6>
+          <p>ID-verified owners and inspected properties.</p>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3">
+        <div class="amenity-card">
+          <div class="amenity-icon location"><i class="fa-solid fa-location-dot"></i></div>
+          <h6>Better Locations</h6>
+          <p>Prime spots close to offices, colleges &amp; transit.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div style="height:30vh;"></div>
+
+<!-- ================= LOGIN MODAL ================= -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content modal-content-custom">
+      <div class="modal-header modal-header-custom">
+        <div>
+          <h5 class="modal-title">Welcome back</h5>
+          <small style="color:#DBEAFE;">Login to manage your listings or saved homes.</small>
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body modal-body-custom">
+        <form id="loginForm">
+          <div class="mb-3">
+            <label class="form-label-custom">Email Address</label>
+            <input type="email" class="form-control form-control-custom" placeholder="you@example.com" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label-custom">Password</label>
+            <input type="password" class="form-control form-control-custom" placeholder="Enter your password" required>
+          </div>
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="rememberMe">
+              <label class="form-check-label" for="rememberMe" style="font-size:0.88rem; color:var(--text-muted);">Remember me</label>
+            </div>
+            <a href="#" style="font-size:0.85rem; color:var(--primary); font-weight:600; text-decoration:none;">Forgot password?</a>
+          </div>
+          <button type="submit" class="btn btn-primary-custom w-100 py-2">Login</button>
+        </form>
+        <div class="divider-text">or continue with</div>
+        <div class="social-badge-row">
+          <a href="#" class="social-badge google" aria-label="Continue with Google"><i class="fa-brands fa-google"></i></a>
+          <a href="#" class="social-badge facebook" aria-label="Continue with Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="social-badge linkedin" aria-label="Continue with LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#" class="social-badge apple" aria-label="Continue with Apple"><i class="fa-brands fa-apple"></i></a>
+        </div>
+        <p class="modal-switch-text">Don't have an account? <a href="#" data-bs-toggle="modal" data-bs-target="#registerModal" data-bs-dismiss="modal">Register</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= REGISTER MODAL ================= -->
+<div class="modal fade" id="registerModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content modal-content-custom">
+      <div class="modal-header modal-header-custom">
+        <div>
+          <h5 class="modal-title">Create your account</h5>
+          <small style="color:#DBEAFE;">Join thousands finding verified homes and PGs.</small>
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body modal-body-custom">
+        <form id="registerForm">
+          <!-- I am a: Owner or Tenant -->
+          <div class="mb-3">
+            <label class="form-label-custom">I am a</label>
+            <div class="role-toggle">
+              <div class="role-option">
+                <input type="radio" name="userRole" id="roleTenant" checked>
+                <label for="roleTenant"><i class="fa-solid fa-user"></i> Tenant</label>
+              </div>
+              <div class="role-option">
+                <input type="radio" name="userRole" id="roleOwner">
+                <label for="roleOwner"><i class="fa-solid fa-key"></i> Owner</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label-custom">Full Name</label>
+            <input type="text" class="form-control form-control-custom" placeholder="Enter your full name" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label-custom">Email Address</label>
+            <input type="email" class="form-control form-control-custom" placeholder="you@example.com" required>
+          </div>
+
+          <!-- Mobile Number -->
+          <div class="mb-3">
+            <label class="form-label-custom">Mobile Number</label>
+            <div class="phone-input-group">
+              <span class="country-code">+91</span>
+              <input type="tel" class="form-control form-control-custom" placeholder="98765 43210" pattern="[0-9]{10}">
+            </div>
+          </div>
+
+          <!-- Owner-only profile section: shown only when "Owner" is selected above -->
+          <div class="owner-profile-section" id="ownerProfileSection">
+            <div class="owner-profile-title"><i class="fa-solid fa-building-user"></i> Owner Profile Details</div>
+
+            <div class="mb-3">
+              <label class="form-label-custom">Property Type You Own</label>
+              <select class="form-select form-select-custom">
+                <option>Apartment / Flat</option>
+                <option>Independent House / Villa</option>
+                <option>PG / Hostel</option>
+                <option>Commercial Space</option>
+              </select>
+            </div>
+
+            <div class="mb-0">
+              <label class="form-label-custom">Property Address</label>
+              <input type="text" class="form-control form-control-custom" placeholder="City, area / locality">
+            </div>
+          </div>
+
+          <!-- Gender -->
+          <div class="mb-3">
+            <label class="form-label-custom">Gender</label>
+            <div class="gender-toggle">
+              <div class="gender-option">
+                <input type="radio" name="gender" id="genderMale" checked>
+                <label for="genderMale">Male</label>
+              </div>
+              <div class="gender-option">
+                <input type="radio" name="gender" id="genderFemale">
+                <label for="genderFemale">Female</label>
+              </div>
+              <div class="gender-option">
+                <input type="radio" name="gender" id="genderOther">
+                <label for="genderOther">Other</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label-custom">Password</label>
+            <input type="password" class="form-control form-control-custom" placeholder="Create a password" required>
+          </div>
+
+          <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" id="agreeTerms">
+            <label class="form-check-label" for="agreeTerms" style="font-size:0.85rem; color:var(--text-muted);">
+              I agree to the <a href="#" style="color:var(--primary);">Terms of Service</a> and <a href="#" style="color:var(--primary);">Privacy Policy</a>
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn-primary-custom w-100 py-2">Create Account</button>
+        </form>
+        <div class="divider-text">or sign up with</div>
+        <div class="social-badge-row">
+          <a href="#" class="social-badge google" aria-label="Sign up with Google"><i class="fa-brands fa-google"></i></a>
+          <a href="#" class="social-badge facebook" aria-label="Sign up with Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="social-badge linkedin" aria-label="Sign up with LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#" class="social-badge apple" aria-label="Sign up with Apple"><i class="fa-brands fa-apple"></i></a>
+        </div>
+        <p class="modal-switch-text">Already have an account? <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-dismiss="modal">Login</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+<script type="module" src="SmartStay Homepage (Javascript).js"></script>
+<!-- SmartStay AI Chatbot Logic -->
+<script type="module" src="smartstay-chatbot.js"></script>
+</body>
+</html>

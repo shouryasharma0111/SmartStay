@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Console · SmartStay</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;600;700&family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Admin Stylesheet -->
+  <link rel="stylesheet" href="SmartStay AdminDashboard (CSS).css">
+  <!-- SmartStay AI Chatbot Widget -->
+  <link rel="stylesheet" href="smartstay-chatbot.css">
+</head>
+<body>
+
+<div class="admin-app">
+
+  <!-- ================= SIDEBAR ================= -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="#" class="brand-logo">
+        <div class="brand-icon">
+          <i class="fa-solid fa-shield-halved"></i>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">SmartStay</span>
+          <span class="brand-badge"><i class="fa-solid fa-lock" style="font-size:0.6rem;"></i> Admin Panel</span>
+        </div>
+      </a>
+      <button class="sidebar-close-btn" id="sidebarCloseBtn" title="Close Sidebar">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <!-- Navigation Menu -->
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Core Overview</div>
+      <a href="#dashboard" class="nav-item active" data-view="dashboard">
+        <i class="fa-solid fa-chart-pie nav-icon"></i>
+        <span class="nav-text">Dashboard</span>
+      </a>
+
+      <div class="nav-section-label">Inventory & Verification</div>
+      <a href="#properties" class="nav-item" data-view="properties">
+        <i class="fa-solid fa-building nav-icon"></i>
+        <span class="nav-text">Properties</span>
+        <span class="nav-badge badge-primary" id="sidebarPropCount">524</span>
+      </a>
+      <a href="#verification-center" class="nav-item" data-view="verification-center">
+        <i class="fa-solid fa-shield-halved nav-icon"></i>
+        <span class="nav-text">Verification Center</span>
+      </a>
+      <a href="#properties-pending" class="nav-item" data-view="properties" data-filter="pending" style="padding-left: 28px;">
+        <i class="fa-solid fa-hourglass-half nav-icon" style="font-size: 0.9rem; color: var(--warning);"></i>
+        <span class="nav-text">Pending Approval</span>
+        <span class="nav-badge badge-warning" id="sidebarPendingCount">52</span>
+      </a>
+      <a href="#properties-reported" class="nav-item" data-view="properties" data-filter="reported" style="padding-left: 28px;">
+        <i class="fa-solid fa-triangle-exclamation nav-icon" style="font-size: 0.9rem; color: var(--danger);"></i>
+        <span class="nav-text">Reported Listings</span>
+        <span class="nav-badge badge-danger" id="sidebarReportedCount">18</span>
+      </a>
+
+      <div class="nav-section-label">User Management</div>
+      <a href="#users" class="nav-item" data-view="users">
+        <i class="fa-solid fa-users nav-icon"></i>
+        <span class="nav-text">Tenants / Users</span>
+        <span class="nav-badge" id="sidebarUserCount">1,248</span>
+      </a>
+      <a href="#owners" class="nav-item" data-view="owners">
+        <i class="fa-solid fa-user-tie nav-icon"></i>
+        <span class="nav-text">Property Owners</span>
+        <span class="nav-badge" id="sidebarOwnerCount">186</span>
+      </a>
+
+      <div class="nav-section-label">Trust & Safety</div>
+      <a href="#reports" class="nav-item" data-view="reports">
+        <i class="fa-solid fa-shield-virus nav-icon"></i>
+        <span class="nav-text">Fraud & Fake Reports</span>
+        <span class="nav-badge badge-danger">18 Open</span>
+      </a>
+      <a href="#reviews" class="nav-item" data-view="reviews">
+        <i class="fa-solid fa-star-half-stroke nav-icon"></i>
+        <span class="nav-text">Reviews & Ratings</span>
+        <span class="nav-badge badge-warning">3 Flagged</span>
+      </a>
+      <a href="#locations" class="nav-item" data-view="locations">
+        <i class="fa-solid fa-location-dot nav-icon"></i>
+        <span class="nav-text">Geocoding & Maps</span>
+      </a>
+
+      <div class="nav-section-label">System & Intelligence</div>
+      <a href="#analytics" class="nav-item" data-view="analytics">
+        <i class="fa-solid fa-chart-line nav-icon"></i>
+        <span class="nav-text">Analytics & Trends</span>
+      </a>
+      <a href="#notifications" class="nav-item" data-view="notifications">
+        <i class="fa-solid fa-bell nav-icon"></i>
+        <span class="nav-text">Notifications</span>
+        <span class="nav-badge badge-danger" id="sidebarNotifBadge">4</span>
+      </a>
+      <a href="#audit-logs" class="nav-item" data-view="audit-logs">
+        <i class="fa-solid fa-clipboard-list nav-icon"></i>
+        <span class="nav-text">Activity / Audit Logs</span>
+      </a>
+      <a href="#settings" class="nav-item" data-view="settings">
+        <i class="fa-solid fa-sliders nav-icon"></i>
+        <span class="nav-text">Admin Settings</span>
+      </a>
+    </nav>
+
+    <!-- Sidebar Footer -->
+    <div class="sidebar-footer">
+      <div class="admin-profile-card">
+        <div class="admin-avatar">SS</div>
+        <div class="admin-info">
+          <div class="admin-name">Shourya Sharma</div>
+          <div class="admin-role">
+            <span class="admin-role-dot"></span> Super Admin
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ================= MAIN CONTENT WRAPPER ================= -->
+  <div class="main-wrapper">
+
+    <!-- Top Sticky Header -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="menu-toggle-btn" id="menuToggleBtn" title="Toggle Sidebar">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="page-breadcrumb">
+          <span class="breadcrumb-parent">SmartStay Admin</span>
+          <span class="breadcrumb-separator"><i class="fa-solid fa-chevron-right"></i></span>
+          <span class="breadcrumb-current" id="topbarBreadcrumb">Dashboard</span>
+        </div>
+      </div>
+
+      <!-- Quick Search -->
+      <div class="topbar-search">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        <input type="text" id="globalSearchInput" placeholder="Quick search properties, users, IDs...">
+      </div>
+
+      <!-- Topbar Right Actions -->
+      <div class="topbar-right">
+        <div class="portal-links">
+          <a href="SmartStay Homepage(HTML).html" class="portal-link-btn" title="Go to Main Website" target="_blank">
+            <i class="fa-solid fa-globe"></i> Website
+          </a>
+          <a href="Smartstay PropertyListing (HTML).html" class="portal-link-btn" title="View Property Catalog">
+            <i class="fa-solid fa-list"></i> Listings
+          </a>
+          <a href="SmartStay OwnerDashboard (HTML).html" class="portal-link-btn" title="Owner Portal">
+            <i class="fa-solid fa-user-tie"></i> Owner
+          </a>
+          <a href="SmartStay TenantDashboard (HTML).html" class="portal-link-btn" title="Tenant Portal">
+            <i class="fa-solid fa-user"></i> Tenant
+          </a>
+        </div>
+
+        <button class="topbar-btn" id="topbarNotifBtn" title="System Notifications">
+          <i class="fa-regular fa-bell"></i>
+          <span class="btn-badge" id="topbarNotifBadge">4</span>
+        </button>
+        
+        <button class="topbar-btn" id="topbarRefreshBtn" title="Refresh Data">
+          <i class="fa-solid fa-rotate"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="content-area">
+
+      <!-- =========================================================
+           1. 📊 DASHBOARD / OVERVIEW VIEW
+           ========================================================= -->
+      <section class="view-section active" id="view-dashboard">
+        <div class="page-header">
+          <div class="page-title-wrap">
+            <h1>Admin Overview</h1>
+            <p>Real-time platform metrics, verification backlog, and fraud detection highlights.</p>
+          </div>
+          <div class="page-header-actions">
+            <button class="btn btn-secondary" id="exportReportBtn">
+              <i class="fa-solid fa-download"></i> Export Report
+            </button>
+            <button class="btn btn-primary" onclick="window.SmartStayAdmin.switchView('properties', 'pending')">
+              <i class="fa-solid fa-clipboard-check"></i> Review 52 Pending
+            </button>
+          </div>
+        </div>
+
+        <!-- 6 Main KPI Metric Cards -->
+        <div class="stats-grid">
+          <!-- Total Users -->
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <span class="stat-label">Total Users</span>
+              <div class="stat-icon-wrap stat-icon-blue"><i class="fa-solid fa-users"></i></div>
+            </div>
+            <div class="stat-value">1,248</div>
+            <div class="stat-footer">
+              <span class="stat-trend up"><i class="fa-solid fa-arrow-up"></i> +84</span>
+              <span>new users this week</span>
+            </div>
+          </div>
+
+          <!-- Total Owners -->
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <span class="stat-label">Total Owners</span>
+              <div class="stat-icon-wrap stat-icon-purple"><i class="fa-solid fa-user-tie"></i></div>
+            </div>
+            <div class="stat-value">186</div>
+            <div class="stat-footer">
+              <span class="stat-trend up"><i class="fa-solid fa-arrow-up"></i> +12</span>
+              <span>registered this month</span>
+            </div>
+          </div>
+
+          <!-- Total Properties -->
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <span class="stat-label">Total Properties</span>
+              <div class="stat-icon-wrap stat-icon-cyan"><i class="fa-solid fa-building"></i></div>
+            </div>
+            <div class="stat-value">524</div>
+            <div class="stat-footer">
+              <span class="stat-trend up"><i class="fa-solid fa-arrow-up"></i> +26</span>
+              <span>new listings added</span>
+            </div>
+          </div>
+
+          <!-- Verified Properties -->
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <span class="stat-label">Verified Properties</span>
+              <div class="stat-icon-wrap stat-icon-green"><i class="fa-solid fa-circle-check"></i></div>
+            </div>
+            <div class="stat-value" style="color: var(--accent);">438</div>
+            <div class="stat-footer">
+              <span class="stat-trend up"><i class="fa-solid fa-shield-halved"></i> 83.5%</span>
+              <span>of catalog verified</span>
+            </div>
+          </div>
+
+          <!-- Pending Approval -->
+          <div class="stat-card" style="border-top: 3px solid var(--warning); cursor: pointer;" onclick="window.SmartStayAdmin.switchView('properties', 'pending')">
+            <div class="stat-card-header">
+              <span class="stat-label">Pending Approval</span>
+              <div class="stat-icon-wrap stat-icon-amber"><i class="fa-solid fa-hourglass-half"></i></div>
+            </div>
+            <div class="stat-value" style="color: var(--warning);">52</div>
+            <div class="stat-footer">
+              <span class="stat-trend neutral"><i class="fa-solid fa-bell"></i> Action needed</span>
+              <span>Avg queue: 4 hrs</span>
+            </div>
+          </div>
+
+          <!-- Reported Listings -->
+          <div class="stat-card" style="border-top: 3px solid var(--danger); cursor: pointer;" onclick="window.SmartStayAdmin.switchView('reports')">
+            <div class="stat-card-header">
+              <span class="stat-label">Reported Listings</span>
+              <div class="stat-icon-wrap stat-icon-red"><i class="fa-solid fa-triangle-exclamation"></i></div>
+            </div>
+            <div class="stat-value" style="color: var(--danger);">18</div>
+            <div class="stat-footer">
+              <span class="stat-trend down"><i class="fa-solid fa-bolt"></i> 4 High Risk</span>
+              <span>Fraud queue</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Action Callout Banner -->
+        <div class="action-alert-banner">
+          <div class="action-alert-left">
+            <div class="action-alert-icon"><i class="fa-solid fa-shield-halved"></i></div>
+            <div class="action-alert-text">
+              <h3>52 Properties Waiting for Document & Geocode Verification</h3>
+              <p>Landlords have submitted utility bills and lease agreements. Keep the trust score high by verifying listings.</p>
+            </div>
+          </div>
+          <button class="btn btn-warning" onclick="window.SmartStayAdmin.switchView('properties', 'pending')">
+            <i class="fa-solid fa-arrow-right"></i> Open Verification Queue
+          </button>
+        </div>
+
+        <!-- Charts Grid 1 -->
+        <div class="dashboard-grid-2">
+          <!-- Locality Search Demand -->
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">Most Searched Localities</h3>
+                <div class="card-subtitle">Search volume across NCR & major student hubs</div>
+              </div>
+              <span class="status-badge status-verified">Live telemetry</span>
+            </div>
+            <div class="chart-bar-container">
+              <div class="chart-bar-row">
+                <div class="chart-bar-label">
+                  <span>Ghaziabad (Near ABES / Indirapuram)</span>
+                  <strong>4,280 searches (42%)</strong>
+                </div>
+                <div class="chart-bar-track">
+                  <div class="chart-bar-fill fill-blue" style="width: 84%;"></div>
+                </div>
+              </div>
+
+              <div class="chart-bar-row">
+                <div class="chart-bar-label">
+                  <span>Noida (Sector 62 / Knowledge Park)</span>
+                  <strong>3,890 searches (38%)</strong>
+                </div>
+                <div class="chart-bar-track">
+                  <div class="chart-bar-fill fill-cyan" style="width: 76%; background: var(--info);"></div>
+                </div>
+              </div>
+
+              <div class="chart-bar-row">
+                <div class="chart-bar-label">
+                  <span>Delhi (North Campus / South Campus)</span>
+                  <strong>2,940 searches (29%)</strong>
+                </div>
+                <div class="chart-bar-track">
+                  <div class="chart-bar-fill fill-purple" style="width: 58%;"></div>
+                </div>
+              </div>
+
+              <div class="chart-bar-row">
+                <div class="chart-bar-label">
+                  <span>Greater Noida (Alpha 1 / Pari Chowk)</span>
+                  <strong>1,850 searches (18%)</strong>
+                </div>
+                <div class="chart-bar-track">
+                  <div class="chart-bar-fill fill-amber" style="width: 37%;"></div>
+                </div>
+              </div>
+
+              <div class="chart-bar-row">
+                <div class="chart-bar-label">
+                  <span>Bengaluru (Koramangala / Whitefield)</span>
+                  <strong>1,620 searches (16%)</strong>
+                </div>
+                <div class="chart-bar-track">
+                  <div class="chart-bar-fill fill-green" style="width: 32%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Catalog Breakdown Donut -->
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">Property Catalog Status</h3>
+                <div class="card-subtitle">524 Total properties</div>
+              </div>
+            </div>
+            <div class="donut-metric-wrap">
+              <div class="donut-svg-box">
+                <svg width="130" height="130" viewBox="0 0 100 100">
+                  <circle cx="50" cy="50" r="40" fill="transparent" stroke="#E2E8F0" stroke-width="14"></circle>
+                  <!-- 438/524 Verified ~ 83.5% -> stroke-dasharray 210, 251.2 -->
+                  <circle cx="50" cy="50" r="40" fill="transparent" stroke="#10B981" stroke-width="14" stroke-dasharray="210 251.2" stroke-linecap="round"></circle>
+                  <!-- 52/524 Pending ~ 9.9% -->
+                  <circle cx="50" cy="50" r="40" fill="transparent" stroke="#F59E0B" stroke-width="14" stroke-dasharray="25 251.2" stroke-dashoffset="-210" stroke-linecap="round"></circle>
+                  <!-- 18/524 Reported ~ 3.4% -->
+                  <circle cx="50" cy="50" r="40" fill="transparent" stroke="#EF4444" stroke-width="14" stroke-dasharray="9 251.2" stroke-dashoffset="-235" stroke-linecap="round"></circle>
+                </svg>
+                <div class="donut-center-text">
+                  <span class="donut-center-pct">83.5%</span>
+                  <span class="donut-center-sub">Verified</span>
+                </div>
+              </div>
+
+              <div class="donut-legend">
+                <div class="legend-item">
+                  <div class="legend-left">
+                    <span class="legend-dot" style="background: #10B981;"></span>
+                    <span>Verified</span>
+                  </div>
+                  <span class="legend-val">438 (83.5%)</span>
+                </div>
+                <div class="legend-item">
+                  <div class="legend-left">
+                    <span class="legend-dot" style="background: #F59E0B;"></span>
+                    <span>Pending</span>
+                  </div>
+                  <span class="legend-val">52 (9.9%)</span>
+                </div>
+                <div class="legend-item">
+                  <div class="legend-left">
+                    <span class="legend-dot" style="background: #EF4444;"></span>
+                    <span>Reported</span>
+                  </div>
+                  <span class="legend-val">18 (3.4%)</span>
+                </div>
+                <div class="legend-item">
+                  <div class="legend-left">
+                    <span class="legend-dot" style="background: #64748B;"></span>
+                    <span>Suspended</span>
+                  </div>
+                  <span class="legend-val">16 (3.2%)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Activity & Quick Inquiries -->
+        <div class="dashboard-grid-2">
+          <!-- Recent Admin Activity -->
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">Recent Activity Stream</h3>
+                <div class="card-subtitle">Real-time audit log of admin verifications & flags</div>
+              </div>
+              <button class="btn btn-ghost btn-sm" onclick="window.SmartStayAdmin.switchView('audit-logs')">View All</button>
+            </div>
+            
+            <div class="timeline" id="dashboardActivityTimeline">
+              <!-- Rendered via Javascript -->
+            </div>
+          </div>
+
+          <!-- Quick System Health / Verification Checklist -->
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">Verification Health</h3>
+                <div class="card-subtitle">Safety & fraud prevention checks</div>
+              </div>
+            </div>
+            
+            <div style="display:flex; flex-direction:column; gap:16px;">
+              <div style="display:flex; justify-content:space-between; align-items:center; padding:12px; background:var(--bg-surface-alt); border-radius:var(--radius-md);">
+                <div>
+                  <div style="font-weight:600; font-size:0.9rem;">Electricity Bill OCR Match</div>
+                  <div style="font-size:0.78rem; color:var(--text-muted);">Consumer name matches owner name</div>
+                </div>
+                <span class="status-badge status-verified">Active 98%</span>
+              </div>
+
+              <div style="display:flex; justify-content:space-between; align-items:center; padding:12px; background:var(--bg-surface-alt); border-radius:var(--radius-md);">
+                <div>
+                  <div style="font-weight:600; font-size:0.9rem;">Google Geocoding Validation</div>
+                  <div style="font-size:0.78rem; color:var(--text-muted);">Exact Lat/Lng coordinate lock</div>
+                </div>
+                <span class="status-badge status-verified">Live API</span>
+              </div>
+
+              <div style="display:flex; justify-content:space-between; align-items:center; padding:12px; background:var(--bg-surface-alt); border-radius:var(--radius-md);">
+                <div>
+                  <div style="font-weight:600; font-size:0.9rem;">Fake Photo Deduplication</div>
+                  <div style="font-size:0.78rem; color:var(--text-muted);">Stock image & duplicate detection</div>
+                </div>
+                <span class="status-badge status-pending">2 Flags</span>
+              </div>
+
+              <div style="display:flex; justify-content:space-between; align-items:center; padding:12px; background:var(--bg-surface-alt); border-radius:var(--radius-md);">
+                <div>
+                  <div style="font-weight:600; font-size:0.9rem;">Fraud Auto-Suspension Rule</div>
+                  <div style="font-size:0.78rem; color:var(--text-muted);">Auto-hide listing upon 3 verified reports</div>
+                </div>
+                <span class="status-badge status-verified">Enabled</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           Verification Center
+           ========================================================= -->
+      <section class="view-section" id="view-verification-center">
+        <div class="page-header">
+          <div class="page-title-wrap">
+            <h1>Verification Center</h1>
+            <p>Review safe verification metadata and resolve documents that need human attention.</p>
+          </div>
+        </div>
+        <div class="table-toolbar">
+          <div class="filter-pills" id="verificationStatusPills">
+            <button class="pill-btn active" data-verification-filter="all">All</button>
+            <button class="pill-btn" data-verification-filter="pending">Pending</button>
+            <button class="pill-btn" data-verification-filter="verified">Verified</button>
+            <button class="pill-btn" data-verification-filter="failed">Failed</button>
+            <button class="pill-btn" data-verification-filter="manual_review">Manual Review</button>
+          </div>
+        </div>
+        <div class="table-card">
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead><tr><th>Property</th><th>Owner</th><th>Provider / Mode</th><th>Document / Issuer</th><th>Status / Date</th><th>Result / Reason</th><th>Action</th></tr></thead>
+              <tbody id="verificationCenterTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           2. 🏠 PROPERTY MANAGEMENT & VERIFICATION VIEW
+           ========================================================= -->
+      <section class="view-section" id="view-properties">
+        <div class="page-header">
+          <div class="page-title-wrap">
+            <h1>Property Management & Verification</h1>
+            <p>Inspect, verify, approve, reject, flag, or suspend property listings across India.</p>
+          </div>
+        </div>
+
+        <!-- Table Toolbar & Filters -->
+        <div class="table-toolbar">
+          <div class="table-search-box">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="text" id="propSearchInput" placeholder="Search property name, owner, locality...">
+          </div>
+
+          <div class="table-filters">
+            <!-- Filter Pills for Status -->
+            <div class="filter-pills" id="propStatusPills">
+              <button class="pill-btn active" data-filter="all">All</button>
+              <button class="pill-btn" data-filter="pending">⏳ Pending</button>
+              <button class="pill-btn" data-filter="verified">✓ Verified</button>
+              <button class="pill-btn" data-filter="rejected">✕ Rejected</button>
+              <button class="pill-btn" data-filter="reported">⚠ Reported</button>
+            </div>
+
+            <!-- City Filter -->
+            <select class="filter-select" id="propCityFilter">
+              <option value="all">All Cities</option>
+              <option value="Ghaziabad">Ghaziabad</option>
+              <option value="Noida">Noida</option>
+              <option value="Delhi">Delhi</option>
+              <option value="Bengaluru">Bengaluru</option>
+              <option value="Greater Noida">Greater Noida</option>
+            </select>
+
+            <!-- Property Type -->
+            <select class="filter-select" id="propTypeFilter">
+              <option value="all">All Types</option>
+              <option value="PG">PG</option>
+              <option value="Hostel">Hostel</option>
+              <option value="Apartment">Apartment</option>
+              <option value="Room">Room</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Properties Table Card -->
+        <div class="table-card">
+          <div class="table-responsive">
+            <table class="data-table" id="propertiesTable">
+              <thead>
+                <tr>
+                  <th>Property Details</th>
+                  <th>Owner</th>
+                  <th>Location & Coordinates</th>
+                  <th>Rent / Mo</th>
+                  <th>Status</th>
+                  <th>Confidence</th>
+                  <th style="text-align: right;">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="propertiesTableBody">
+                <!-- Injected via JavaScript -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Pagination -->
+          <div class="table-pagination">
+            <div id="propPaginationInfo">Showing 1 to 10 of 524 properties</div>
+            <div class="pagination-controls" id="propPaginationControls">
+              <button class="page-num-btn active">1</button>
+              <button class="page-num-btn">2</button>
+              <button class="page-num-btn">3</button>
+              <button class="page-num-btn">...</button>
+              <button class="page-num-btn">53</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           3. 👤 USER (TENANT) MANAGEMENT VIEW
+           ========================================================= -->
+      <section class="view-section" id="view-users">
+        <div class="page-header">
+          <div class="page-title-wrap">
+            <h1>User (Tenant) Management</h1>
+            <p>Manage student and working professional accounts, investigate reports, and suspend violators.</p>
+          </div>
+          <div class="page-header-actions">
+            <button class="btn btn-secondary" id="exportUsersBtn">
+              <i class="fa-solid fa-file-csv"></i> Export Users CSV
+            </button>
+          </div>
+        </div>
+
+        <div class="stats-grid" style="margin-bottom: 20px;">
+          <div class="stat-card">
+            <div class="stat-label">Total Tenants</div>
+            <div class="stat-value">1,248</div>
+            <div class="stat-footer"><span class="stat-trend up">+84 this week</span></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Active & Verified</div>
+            <div class="stat-value" style="color:var(--accent);">1,232</div>
+            <div class="stat-footer"><span>98.7% verified mobile/email</span></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Suspended Users</div>
+            <div class="stat-value" style="color:var(--danger);">16</div>
+            <div class="stat-footer"><span class="stat-trend down">Violations / Spam</span></div>
+          </div>
+        </div>
+
+        <!-- Table Toolbar -->
+        <div class="table-toolbar">
+          <div class="table-search-box">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="text" id="userSearchInput" placeholder="Search tenant name, email, college...">
+          </div>
+          <div class="table-filters">
+            <div class="filter-pills" id="userStatusPills">
+              <button class="pill-btn active" data-filter="all">All Users</button>
+              <button class="pill-btn" data-filter="Active">Active (1,232)</button>
+              <button class="pill-btn" data-filter="Suspended">Suspended (16)</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Users Table -->
+        <div class="table-card">
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>User / Student</th>
+                  <th>Contact Info</th>
+                  <th>College / Workplace</th>
+                  <th>Inquiries / Bookings</th>
+                  <th>Reports Filed</th>
+                  <th>Account Status</th>
+                  <th>Joined Date</th>
+                  <th style="text-align: right;">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="usersTableBody">
+                <!-- Injected via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           4. 🏢 OWNER MANAGEMENT VIEW
+           ========================================================= -->
+      <section class="view-section" id="view-owners">
+        <div class="page-header">
+          <div class="page-title-wrap">
+            <h1>Property Owner Management</h1>
+            <p>Track landlords, verify KYC credentials, inspect owner portfolios, and handle tenant complaints.</p>
+          </div>
+          <div class="page-header-actions">
+            <button class="btn btn-secondary" id="exportOwnersBtn">
+              <i class="fa-solid fa-file-csv"></i> Export Owners
+            </button>
+          </div>
+        </div>
+
+        <div class="stats-grid" style="margin-bottom: 20px;">
+          <div class="stat-card">
+            <div class="stat-label">Registered Landlords</div>
+            <div class="stat-value">186</div>
+            <div class="stat-footer"><span class="stat-trend up">+12 this month</span></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">KYC Verified</div>
+            <div class="stat-value" style="color:var(--accent);">174</div>
+            <div class="stat-footer"><span>Aadhaar / Bank checked</span></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">With Open Complaints</div>
+            <div class="stat-value" style="color:var(--danger);">8</div>
+            <div class="stat-footer"><span class="stat-trend down">Requires dispute check</span></div>
+          </div>
+        </div>
+
+        <!-- Table Toolbar -->
+        <div class="table-toolbar">
+          <div class="table-search-box">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="text" id="ownerSearchInput" placeholder="Search owner name, phone, city...">
+          </div>
+          <div class="table-filters">
+            <div class="filter-pills" id="ownerStatusPills">
+              <button class="pill-btn active" data-filter="all">All Owners</button>
+              <button class="pill-btn" data-filter="Verified">Verified KYC (174)</button>
+              <button class="pill-btn" data-filter="Pending">Pending KYC (8)</button>
+              <button class="pill-btn" data-filter="Suspended">Suspended (4)</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Owners Table -->
+        <div class="table-card">
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Owner Name</th>
+                  <th>Contact</th>
+                  <th>Total Properties</th>
+                  <th>Verified Listings</th>
+                  <th>Pending Listings</th>
+                  <th>Complaints / Reports</th>
+                  <th>KYC Status</th>
+                  <th style="text-align: right;">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="ownersTableBody">
+                <!-- Injected via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           5. 🚨 REPORTS & FAKE LISTING MANAGEMENT VIEW
+           ========================================================= -->
+      <section class="view-section" id="view-reports">
+        <div class="page-header">
+          <div class="page-title-wrap">
+            <h1>Fraud & Fake Listing Reports</h1>
+            <p>Review tenant complaints, verify fraudulent activities, dismiss false alarms, or suspend listings.</p>
+          </div>
+          <div class="page-header-actions">
+            <span class="status-badge status-reported" style="font-size:0.85rem; padding: 6px 14px;">
+              <i class="fa-solid fa-triangle-exclamation"></i> 18 Open Reports
+            </span>
+          </div>
+        </div>
+
+        <!-- Report Categories Filter -->
+        <div class="table-toolbar">
+          <div class="filter-pills" id="reportCategoryPills">
+            <button class="pill-btn active" data-cat="all">All Categories (18)</button>
+            <button class="pill-btn" data-cat="already_rented">Already Rented (6)</button>
+            <button class="pill-btn" data-cat="fake_property">Fake Property / Photos (5)</button>
+            <button class="pill-btn" data-cat="wrong_price">Wrong Price / Info (3)</button>
+            <button class="pill-btn" data-cat="duplicate">Duplicate Listing (2)</button>
+            <button class="pill-btn" data-cat="suspicious_owner">Suspicious Owner (2)</button>
+          </div>
+        </div>
+
+        <!-- Report Cards Grid -->
+        <div class="reports-grid" id="reportsGrid">
+          <!-- Injected via JavaScript -->
+        </div>
+      </section>
+
+      <!-- =========================================================
+           6. ⭐ REVIEWS & RATINGS MANAGEMENT VIEW
+           ========================================================= -->
+      <section class="view-section" id="view-reviews">
+        <div class="page-header">
+          <div class="page-title-wrap">
+            <h1>Reviews & Ratings Moderation</h1>
+            <p>Moderate user reviews, filter reported comments, and remove abusive or false feedback.</p>
+          </div>
+        </div>
+
+        <div class="table-toolbar">
+          <div class="table-search-box">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="text" id="reviewSearchInput" placeholder="Search review text, property, user...">
+          </div>
+          <div class="table-filters">
+            <div class="filter-pills" id="reviewFilterPills">
+              <button class="pill-btn active" data-filter="all">All Reviews</button>
+              <button class="pill-btn" data-filter="flagged">🚨 Flagged (3)</button>
+              <button class="pill-btn" data-filter="5star">5 Stars</button>
+              <button class="pill-btn" data-filter="low">1-2 Stars</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="reviewsListContainer">
+          <!-- Injected via JS -->
+        </div>
+      </section>
+
+      <!-- =========================================================
+           7. 📍 LOCATION / GEOCODING DATA MANAGEMENT VIEW
+           ========================================================= -->
+      <section class="view-section" id="view-locations">
+        <div class="page-header">
+          <div class="page-title-wrap">
+            <h1>Location & Geocoding Data</h1>
+            <p>Verify Google Maps coordinates, check geocoding precision, and flag inaccurate pin locations.</p>
+          </div>
+          <div class="page-header-actions">
+            <button class="btn btn-secondary" onclick="window.SmartStayAdmin.verifyAllCoordinates()">
+              <i class="fa-solid fa-satellite-dish"></i> Batch Validate All Coordinates
+            </button>
+          </div>
+        </div>
+
+        <div class="table-card">
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Property</th>
+                  <th>Submitted Address</th>
+                  <th>Geocoded Latitude / Longitude</th>
+                  <th>Google Geocoding Status</th>
+                  <th>Map Pin Confidence</th>
+                  <th style="text-align: right;">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="locationsTableBody">
+                <!-- Injected via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           8. 📈 ANALYTICS & TRENDS VIEW
+           ========================================================= -->
+      <section class="view-section" id="view-analytics">
+        <div class="page-header">
+          <div class="page-title-wrap">
+            <h1>Platform Analytics & Demand Insights</h1>
+            <p>Search trends, popular price bands, room sharing preferences, and inquiry rates.</p>
+          </div>
+        </div>
+
+        <!-- 4 Activity Metric Cards -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-label">Monthly Property Views</div>
+            <div class="stat-value">48,920</div>
+            <div class="stat-footer"><span class="stat-trend up">+18.4%</span> vs last month</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Saved Listings / Wishlist</div>
+            <div class="stat-value">6,830</div>
+            <div class="stat-footer"><span class="stat-trend up">+12.1%</span> vs last month</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Direct Tenant Inquiries</div>
+            <div class="stat-value">3,420</div>
+            <div class="stat-footer"><span class="stat-trend up">+24.6%</span> vs last month</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Fraud Report Rate</div>
+            <div class="stat-value" style="color:var(--accent);">0.34%</div>
+            <div class="stat-footer"><span class="stat-trend down">-0.12%</span> healthy platform</div>
+          </div>
+        </div>
+
+        <div class="dashboard-grid-2">
+          <!-- Popular Budget Ranges -->
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Popular Budget Search Ranges</h3>
+            </div>
+            <div class="chart-bar-container">
+              <div class="chart-bar-row">
+                <div class="chart-bar-label">
+                  <span>Under ₹7,000 / month (Budget PG / Student Rooms)</span>
+                  <strong>38%</strong>
+                </div>
+                <div class="chart-bar-track">
+                  <div class="chart-bar-fill fill-blue" style="width: 38%;"></div>
+                </div>
+              </div>
+
+              <div class="chart-bar-row">
+                <div class="chart-bar-label">
+                  <span>₹7,000 - ₹12,000 / month (Standard Furnished PG)</span>
+                  <strong>44% (Most Popular)</strong>
+                </div>
+                <div class="chart-bar-track">
+                  <div class="chart-bar-fill fill-green" style="width: 44%;"></div>
+                </div>
+              </div>
+
+              <div class="chart-bar-row">
+                <div class="chart-bar-label">
+                  <span>₹12,000 - ₹20,000 / month (Premium Single Rooms / Studio)</span>
+                  <strong>14%</strong>
+                </div>
+                <div class="chart-bar-track">
+                  <div class="chart-bar-fill fill-purple" style="width: 14%;"></div>
+                </div>
+              </div>
+
+              <div class="chart-bar-row">
+                <div class="chart-bar-label">
+                  <span>₹20,000+ / month (Luxury 1BHK / 2BHK Flats)</span>
+                  <strong>4%</strong>
+                </div>
+                <div class="chart-bar-track">
+                  <div class="chart-bar-fill fill-amber" style="width: 4%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sharing Type Preference -->
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Room Sharing Type Preference</h3>
+            </div>
+            <div class="chart-bar-container">
+              <div class="chart-bar-row">
+                <div class="chart-bar-label">
+                  <span>Double Sharing (Twin)</span>
+                  <strong>48%</strong>
+                </div>
+                <div class="chart-bar-track">
+                  <div class="chart-bar-fill fill-blue" style="width: 48%;"></div>
+                </div>
+              </div>
+
+              <div class="chart-bar-row">
+                <div class="chart-bar-label">
+                  <span>Single Private Room</span>
+                  <strong>36%</strong>
+                </div>
+                <div class="chart-bar-track">
+                  <div class="chart-bar-fill fill-green" style="width: 36%;"></div>
+                </div>
+              </div>
+
+              <div class="chart-bar-row">
+                <div class="chart-bar-label">
+                  <span>Triple / Quad Sharing</span>
+                  <strong>16%</strong>
+                </div>
+                <div class="chart-bar-track">
+                  <div class="chart-bar-fill fill-amber" style="width: 16%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           9. 🔔 NOTIFICATIONS CENTER VIEW
+           ========================================================= -->
+      <section class="view-section" id="view-notifications">
+        <div class="page-header">
+          <div class="page-title-wrap">
+            <h1>System Notifications & Alerts</h1>
+            <p>Real-time system events, pending verification reminders, and fraud alerts.</p>
+          </div>
+          <div class="page-header-actions">
+            <button class="btn btn-secondary" onclick="window.SmartStayAdmin.markAllNotificationsRead()">
+              <i class="fa-solid fa-check-double"></i> Mark All as Read
+            </button>
+          </div>
+        </div>
+
+        <div class="table-card" style="padding: 20px;" id="notificationsCenterList">
+          <!-- Injected via JS -->
+        </div>
+      </section>
+
+      <!-- =========================================================
+           10. 📋 ACTIVITY & AUDIT LOGS VIEW
+           ========================================================= -->
+      <section class="view-section" id="view-audit-logs">
+        <div class="page-header">
+          <div class="page-title-wrap">
+            <h1>Activity & Audit Logs</h1>
+            <p>Immutable record of all administrative verifications, rejections, suspensions, and actions.</p>
+          </div>
+          <div class="page-header-actions">
+            <button class="btn btn-secondary" id="exportAuditLogsBtn">
+              <i class="fa-solid fa-download"></i> Export Audit Logs
+            </button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="table-toolbar" style="margin-bottom: 20px;">
+            <div class="table-search-box">
+              <i class="fa-solid fa-magnifying-glass search-icon"></i>
+              <input type="text" id="auditSearchInput" placeholder="Search audit actions, properties, reasons...">
+            </div>
+            <div class="table-filters">
+              <select class="filter-select" id="auditFilterType">
+                <option value="all">All Action Types</option>
+                <option value="Approve">Approvals</option>
+                <option value="Reject">Rejections</option>
+                <option value="Suspend">Suspensions</option>
+                <option value="Resolve">Report Resolutions</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="timeline" id="fullAuditTimeline">
+            <!-- Injected via JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           11. ⚙️ ADMIN SETTINGS VIEW
+           ========================================================= -->
+      <section class="view-section" id="view-settings">
+        <div class="page-header">
+          <div class="page-title-wrap">
+            <h1>Admin Platform Settings</h1>
+            <p>Configure automated verification rules, notification thresholds, and security parameters.</p>
+          </div>
+          <div class="page-header-actions">
+            <button class="btn btn-primary" onclick="window.SmartStayAdmin.saveSettings()">
+              <i class="fa-solid fa-floppy-disk"></i> Save Platform Settings
+            </button>
+          </div>
+        </div>
+
+        <div class="dashboard-grid-2">
+          <!-- Profile & Security -->
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Admin Account & Security</h3>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:16px;">
+              <div>
+                <label style="font-size:0.85rem; font-weight:600; color:var(--secondary); display:block; margin-bottom:6px;">Admin Full Name</label>
+                <input type="text" class="filter-select" style="width:100%;" value="Shourya Sharma">
+              </div>
+              <div>
+                <label style="font-size:0.85rem; font-weight:600; color:var(--secondary); display:block; margin-bottom:6px;">Official Admin Email</label>
+                <input type="email" class="filter-select" style="width:100%;" value="admin@smartstay.ac.in">
+              </div>
+              <div>
+                <label style="font-size:0.85rem; font-weight:600; color:var(--secondary); display:block; margin-bottom:6px;">Role Designation</label>
+                <input type="text" class="filter-select" style="width:100%;" value="Lead Developer & Super Administrator" disabled>
+              </div>
+            </div>
+          </div>
+
+          <!-- Platform Automation Rules -->
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Trust & Verification Policy Rules</h3>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:16px;">
+              <label style="display:flex; align-items:center; gap:12px; cursor:pointer;">
+                <input type="checkbox" checked style="width:18px; height:18px; accent-color:var(--primary);">
+                <div>
+                  <div style="font-weight:600; font-size:0.9rem;">Require Electricity / Utility Bill for PG Approval</div>
+                  <div style="font-size:0.78rem; color:var(--text-muted);">Owners must upload recent utility bill before listing can be marked verified.</div>
+                </div>
+              </label>
+
+              <label style="display:flex; align-items:center; gap:12px; cursor:pointer;">
+                <input type="checkbox" checked style="width:18px; height:18px; accent-color:var(--primary);">
+                <div>
+                  <div style="font-weight:600; font-size:0.9rem;">Auto-Flag Listings with 3+ Tenant Fraud Reports</div>
+                  <div style="font-size:0.78rem; color:var(--text-muted);">Temporarily hides listing from search results until admin audit.</div>
+                </div>
+              </label>
+
+              <label style="display:flex; align-items:center; gap:12px; cursor:pointer;">
+                <input type="checkbox" checked style="width:18px; height:18px; accent-color:var(--primary);">
+                <div>
+                  <div style="font-weight:600; font-size:0.9rem;">Strict Google Geocoding Lat/Lng Integrity</div>
+                  <div style="font-size:0.78rem; color:var(--text-muted);">Flag coordinates that deviate >500m from provided postal address.</div>
+                </div>
+              </label>
+
+              <label style="display:flex; align-items:center; gap:12px; cursor:pointer;">
+                <input type="checkbox" checked style="width:18px; height:18px; accent-color:var(--primary);">
+                <div>
+                  <div style="font-weight:600; font-size:0.9rem;">Instant Email Notification on High-Risk Fraud Reports</div>
+                  <div style="font-size:0.78rem; color:var(--text-muted);">Send alert to admin inbox immediately when 'Fake Property' is reported.</div>
+                </div>
+              </label>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<!-- =========================================================
+     MODALS & DIALOGS
+     ========================================================= -->
+
+<!-- 1. Property Deep Verification & Inspection Modal -->
+<div class="modal-backdrop" id="verifyPropertyModal">
+  <div class="modal-dialog">
+    <div class="modal-header">
+      <div style="display:flex; align-items:center; gap:10px;">
+        <span class="brand-icon" style="width:32px; height:32px; font-size:0.9rem;"><i class="fa-solid fa-shield-halved"></i></span>
+        <div>
+          <h3 class="modal-title" id="modalPropTitle">Skyline Boys PG</h3>
+          <p style="font-size:0.8rem; margin:0;" id="modalPropSubtitle">Pending Admin Verification • Submitted 2 days ago</p>
+        </div>
+      </div>
+      <button class="modal-close-btn" onclick="window.SmartStayAdmin.closeModal('verifyPropertyModal')">&times;</button>
+    </div>
+
+    <div class="modal-body">
+      <!-- Photo Banner -->
+      <div style="position:relative; height:220px; border-radius:var(--radius-md); overflow:hidden; margin-bottom:20px;">
+        <img id="modalPropImage" src="" alt="Property" style="width:100%; height:100%; object-fit:cover;">
+        <div style="position:absolute; bottom:12px; left:12px; display:flex; gap:8px;">
+          <span class="status-badge" id="modalPropStatusBadge">Pending</span>
+          <span class="status-badge" style="background:rgba(15,23,42,0.85); color:#fff;" id="modalPropRent">₹8,500 / mo</span>
+        </div>
+      </div>
+
+      <!-- 2-Column Inspection Grid -->
+      <div class="inspection-grid">
+        <!-- Property & Owner Info -->
+        <div class="inspection-card">
+          <h4><i class="fa-solid fa-user-tie" style="color:var(--primary);"></i> Owner & Property Info</h4>
+          <div style="display:flex; flex-direction:column; gap:8px; font-size:0.85rem;">
+            <div><strong>Owner Name:</strong> <span id="modalOwnerName">Rahul Sharma</span></div>
+            <div><strong>Contact Phone:</strong> <span id="modalOwnerPhone">+91 98765 43210</span></div>
+            <div><strong>Owner KYC:</strong> <span class="status-badge status-verified">Aadhaar Verified</span></div>
+            <div><strong>Property Type:</strong> <span id="modalPropType">PG (Boys)</span></div>
+            <div><strong>Sharing:</strong> <span id="modalPropSharing">Double Sharing</span></div>
+            <div><strong>Amenities:</strong> <span id="modalPropAmenities">Wi-Fi, Food, AC, Power Backup</span></div>
+          </div>
+        </div>
+
+        <!-- Location & Geocoding Details -->
+        <div class="inspection-card">
+          <h4><i class="fa-solid fa-location-dot" style="color:var(--accent);"></i> Address & Google Geocoding</h4>
+          <div style="display:flex; flex-direction:column; gap:8px; font-size:0.85rem;">
+            <div><strong>Address:</strong> <span id="modalPropAddress">123, 4th Block, Koramangala, Bengaluru</span></div>
+            <div><strong>City:</strong> <span id="modalPropCity">Bengaluru</span></div>
+            <div><strong>Coordinates:</strong> <span class="mono" id="modalPropCoords">12.9352° N, 77.6245° E</span></div>
+            <div><strong>Google Geocode Status:</strong> <span class="status-badge status-verified"><i class="fa-solid fa-check"></i> High Precision Match</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Uploaded Verification Documents -->
+      <div style="margin-top:20px;">
+        <h4 style="font-size:0.9rem; margin-bottom:10px; color:var(--secondary);">
+          <i class="fa-solid fa-file-contract" style="color:var(--warning);"></i> Uploaded Landlord Documents
+        </h4>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+          <div class="doc-preview-box">
+            <i class="fa-solid fa-file-invoice-dollar" style="font-size:1.8rem; color:var(--primary); margin-bottom:6px;"></i>
+            <div style="font-weight:600; font-size:0.85rem;">Electricity_Bill_Latest.pdf</div>
+            <div style="font-size:0.75rem; color:var(--accent);">✓ Name & Address Matched</div>
+          </div>
+          <div class="doc-preview-box">
+            <i class="fa-solid fa-id-card" style="font-size:1.8rem; color:var(--accent); margin-bottom:6px;"></i>
+            <div style="font-weight:600; font-size:0.85rem;">Owner_Aadhaar_KYC.pdf</div>
+            <div style="font-size:0.75rem; color:var(--accent);">✓ UIDAI Verified ID</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Admin Decision Notes -->
+      <div style="margin-top:20px;">
+        <label style="font-size:0.85rem; font-weight:600; color:var(--secondary); display:block; margin-bottom:6px;">
+          Admin Action Note / Feedback to Owner (Optional):
+        </label>
+        <textarea id="modalAdminNote" class="filter-select" style="width:100%; height:70px; resize:none;" placeholder="Enter reason if rejecting or requesting changes (e.g., 'Please provide a clearer photo of the entrance')..."></textarea>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn btn-secondary" onclick="window.SmartStayAdmin.closeModal('verifyPropertyModal')">Cancel</button>
+      <button class="btn btn-danger" id="modalRejectBtn">
+        <i class="fa-solid fa-xmark"></i> Reject Listing
+      </button>
+      <button class="btn btn-warning" id="modalRequestChangesBtn">
+        <i class="fa-solid fa-pen"></i> Request Changes
+      </button>
+      <button class="btn btn-success" id="modalApproveBtn">
+        <i class="fa-solid fa-check"></i> Approve & Verify Listing
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- 2. User / Tenant Profile Modal -->
+<div class="modal-backdrop" id="userProfileModal">
+  <div class="modal-dialog" style="max-width: 600px;">
+    <div class="modal-header">
+      <h3 class="modal-title">Tenant Profile Overview</h3>
+      <button class="modal-close-btn" onclick="window.SmartStayAdmin.closeModal('userProfileModal')">&times;</button>
+    </div>
+    <div class="modal-body" id="userModalContent">
+      <!-- Injected via JS -->
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" onclick="window.SmartStayAdmin.closeModal('userProfileModal')">Close</button>
+      <button class="btn btn-danger" id="modalUserSuspendBtn">Suspend Account</button>
+    </div>
+  </div>
+</div>
+
+<!-- 3. Owner Portfolio Modal -->
+<div class="modal-backdrop" id="ownerPortfolioModal">
+  <div class="modal-dialog" style="max-width: 720px;">
+    <div class="modal-header">
+      <h3 class="modal-title" id="ownerModalTitle">Owner Properties Portfolio</h3>
+      <button class="modal-close-btn" onclick="window.SmartStayAdmin.closeModal('ownerPortfolioModal')">&times;</button>
+    </div>
+    <div class="modal-body" id="ownerModalContent">
+      <!-- Injected via JS -->
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" onclick="window.SmartStayAdmin.closeModal('ownerPortfolioModal')">Close</button>
+      <button class="btn btn-warning" id="modalOwnerContactBtn"><i class="fa-solid fa-phone"></i> Contact Owner</button>
+    </div>
+  </div>
+</div>
+
+<!-- 4. Report Investigation & Action Modal -->
+<div class="modal-backdrop" id="reportActionModal">
+  <div class="modal-dialog" style="max-width: 620px;">
+    <div class="modal-header">
+      <h3 class="modal-title"><i class="fa-solid fa-shield-virus" style="color:var(--danger);"></i> Investigate Fraud Report</h3>
+      <button class="modal-close-btn" onclick="window.SmartStayAdmin.closeModal('reportActionModal')">&times;</button>
+    </div>
+    <div class="modal-body" id="reportModalContent">
+      <!-- Injected via JS -->
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" id="modalDismissReportBtn">
+        <i class="fa-solid fa-check"></i> Dismiss Report
+      </button>
+      <button class="btn btn-warning" id="modalWarnOwnerBtn">
+        <i class="fa-solid fa-triangle-exclamation"></i> Issue Warning to Owner
+      </button>
+      <button class="btn btn-danger" id="modalSuspendListingBtn">
+        <i class="fa-solid fa-ban"></i> Suspend Listing
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ================= TOAST CONTAINER ================= -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- Admin JavaScript Logic -->
+<script type="module" src="SmartStay AdminDashboard (Javascript).js"></script>
+<!-- SmartStay AI Chatbot Logic -->
+<script type="module" src="smartstay-chatbot.js"></script>
+
+</body>
+</html>
